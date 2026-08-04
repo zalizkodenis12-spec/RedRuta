@@ -559,40 +559,6 @@
                 <option value="Забір аутокістки">Забір аутокістки (1500 грн)</option>
                 <option value="Формувач">Формувач (1500 грн)</option>
               </optgroup>
-              <optgroup label="Ортопедичний етап">
-                <option value="Тимчасова коронка">Тимчасова коронка (2800 грн)</option>
-                <option value="Мультиюніт Mega Gen">Мультиюніт Mega Gen (від 2500 грн)</option>
-                <option value="Мультиюніт Straumann">Мультиюніт Straumann (від 3000 грн)</option>
-                <option value="Коронка на імпланті - металокераміка">Коронка на імпланті - металокераміка (від10500 грн)</option>
-                <option value="Коронка на імпланті - цирконій або прескераміка">Коронка на імпланті - цирконій або прескераміка (від 14 000 грн)</option>
-                <option value="Фіксація коронки">Фіксація коронки (300 грн)</option>
-              </optgroup>
-              <optgroup label="Хірургічне лікування">
-                <option value="Видалення молочного зуба">Видалення молочного зуба (700 грн)</option>
-                <option value="Видалення однокореневого зуба">Видалення однокореневого зуба (від 1500 грн)</option>
-                <option value="Видалення багатокореневого зуба">Видалення багатокореневого зуба (від 1800 грн)</option>
-                <option value="Видалення зуба мудрості (прорізаний)">Видалення зуба мудрості (прорізаний) (від 2000 грн)</option>
-                <option value="Видалення зуба мудрості (напівпрорізаний)">Видалення зуба мудрості (напівпрорізаний) (від 2500 грн)</option>
-                <option value="Видалення зуба мудрості (непрорізаний)">Видалення зуба мудрості (непрорізаний) (від 3000 грн)</option>
-                <option value="Атипове видалення зуба мудрості">Атипове видалення зуба мудрості (від 4000 грн)</option>
-                <option value="Відкритий кюретаж (1 зуб)">Відкритий кюретаж (1 зуб) (400 грн)</option>
-                <option value="Закритий кюретаж (1 зуб)">Закритий кюретаж (1 зуб) (300 грн)</option>
-                <option value="Кюретаж лунки">Кюретаж лунки (від 200 грн)</option>
-                <option value="Резекція різця">Резекція різця (10000 грн)</option>
-                <option value="Резекція премоляра">Резекція премоляра (12000 грн)</option>
-                <option value="Резекція моляра">Резекція моляра (14000 грн)</option>
-                <option value="Корекція вуздечки">Корекція вуздечки (2000 грн)</option>
-                <option value="Лікування альвеоліту за допомогою PRF">Лікування альвеоліту за допомогою PRF (1000 грн)</option>
-                <option value="Коагуляція м'яких тканин">Коагуляція м'яких тканин (300 грн)</option>
-                <option value="Клінічне видовження коронки зуба">Клінічне видовження коронки зуба (1000 грн)</option>
-                <option value="Хірургічне лікування перикоронариту зуба">Хірургічне лікування перикоронариту зуба (700 грн)</option>
-                <option value="Використання PRF мембрани">Використання PRF мембрани (800 грн)</option>
-                <option value="Накладання гемостатичної, колагенової губки">Накладання гемостатичної, колагенової губки (300 грн)</option>
-                <option value="Накладання колагенового конуса Collacone">Накладання колагенового конуса Collacone (800 грн)</option>
-                <option value="Ушиття лунки">Ушиття лунки (300 грн)</option>
-                <option value="Послаблюючий розріз">Послаблюючий розріз (200 грн)</option>
-              </optgroup>
-            </select>
             <span class="field-error" role="alert"></span>
           </div>
           <div class="field" style="margin-bottom: 24px;">
@@ -688,63 +654,9 @@
     const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
 
     PRODUCTS.forEach(function(product) {
-      const card = document.createElement('div');
-      card.className = 'product-card reveal';
-      card.setAttribute('data-id', product.id);
-
-      const mediaContent = product.image
-        ? `<img src="${product.image}" alt="${product.name}" loading="lazy">`
-        : `<div class="product-media-placeholder">${flowerSVG}<span>Фото скоро</span></div>`;
-
-      card.innerHTML = `
-        <div class="product-media">
-          ${mediaContent}
-          <button class="product-wishlist" aria-label="Додати до обраного" data-id="${product.id}">
-            ${heartSVG}
-          </button>
-        </div>
-        <div class="product-body">
-          <div class="product-name">${product.name}</div>
-          <div class="product-price">${product.price.toLocaleString('uk-UA')} ₴</div>
-          <div class="product-card-footer">
-            <button class="btn-cart" data-id="${product.id}">
-              ${cartSVG} В кошик
-            </button>
-          </div>
-        </div>
-      `;
-
-      // Click on card → navigate to product page (excluding wishlist and cart buttons)
-      card.addEventListener('click', function(e) {
-        if (e.target.closest('.product-wishlist') || e.target.closest('.btn-cart')) return;
-        window.location.href = '/product/' + product.slug;
-      });
-
-      // Wishlist toggle
-      const wishBtn = card.querySelector('.product-wishlist');
-      wishBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        this.classList.toggle('active');
-        const isActive = this.classList.contains('active');
-        this.setAttribute('aria-label', isActive ? 'Видалити з обраного' : 'Додати до обраного');
-      });
-
-      // Add to cart
-      const cartBtn = card.querySelector('.btn-cart');
-      cartBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        // TODO: підключити логіку кошика
-        this.textContent = '✓ Додано';
-        this.style.background = 'var(--accent)';
-        this.style.color = '#ffffff';
-        setTimeout(() => {
-          this.innerHTML = cartSVG + ' В кошик';
-          this.style.background = '';
-          this.style.color = '';
-        }, 1800);
-      });
-
-      grid.appendChild(card);
+      if (typeof createProductCard === 'function') {
+        grid.appendChild(createProductCard(product));
+      }
     });
 
     // Trigger reveal animation for newly added cards
