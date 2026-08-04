@@ -141,10 +141,12 @@ function createProductCard(product) {
     </div>
   \`;
 
-  // Click on card → navigate to product page (excluding wishlist and cart buttons)
+  // Click on card → open product modal
   card.addEventListener('click', function(e) {
     if (e.target.closest('.product-wishlist') || e.target.closest('.btn-cart')) return;
-    window.location.href = '/product/' + product.slug;
+    if (typeof window.openProductModal === 'function') {
+      window.openProductModal(product.id);
+    }
   });
 
   // Wishlist toggle
@@ -160,15 +162,17 @@ function createProductCard(product) {
   const cartBtn = card.querySelector('.btn-cart');
   cartBtn.addEventListener('click', function(e) {
     e.stopPropagation();
-    // TODO: підключити логіку кошика
-    this.textContent = '✓ Додано';
-    this.style.background = 'var(--accent)';
-    this.style.color = '#ffffff';
-    setTimeout(() => {
-      this.innerHTML = cartSVG + ' В кошик';
-      this.style.background = '';
-      this.style.color = '';
-    }, 1800);
+    if (typeof window.addToCart === 'function') {
+      window.addToCart(product.id, 1);
+      this.textContent = '✓ Додано';
+      this.style.background = 'var(--accent)';
+      this.style.color = '#ffffff';
+      setTimeout(() => {
+        this.innerHTML = cartSVG + ' В кошик';
+        this.style.background = '';
+        this.style.color = '';
+      }, 1800);
+    }
   });
 
   return card;
