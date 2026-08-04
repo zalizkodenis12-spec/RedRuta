@@ -264,6 +264,19 @@
     </div>
   </section>
 
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="section-title">Що кажуть наші клієнти</h2>
+      </div>
+      <div class="reviews-grid" id="reviewsGrid">
+        <!-- Відгуки генеруються через JS -->
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES CAROUSEL -->
   <section class="section services-section" id="services" style="background: #ffffff;">
     <div class="container">
@@ -687,6 +700,37 @@
           ${mediaContent}
         </div>
         <div class="category-title">${category.name}</div>
+      `;
+
+      grid.appendChild(card);
+    });
+  })();
+</script>
+
+<script src="assets/js/reviews.js"></script>
+<script>
+  // ===== Render Reviews from REVIEWS array =====
+  (function() {
+    const grid = document.getElementById('reviewsGrid');
+    if (!grid || typeof REVIEWS === 'undefined') return;
+
+    const starSVG = `<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+
+    REVIEWS.forEach(function(review) {
+      const card = document.createElement('div');
+      card.className = 'review-card reveal';
+
+      let starsHtml = '';
+      for(let i=0; i<review.rating; i++) {
+        starsHtml += starSVG;
+      }
+
+      card.innerHTML = `
+        <div class="review-stars">
+          ${starsHtml}
+        </div>
+        <p class="review-text">"${review.text}"</p>
+        <div class="review-author">${review.name}</div>
       `;
 
       grid.appendChild(card);

@@ -1258,6 +1258,67 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 }
 
 
+
+/* ===== Reviews ===== */
+.reviews-section {
+  padding: 96px 0;
+  background: var(--bg);
+}
+.reviews-section .section-head {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.reviews-section .section-title {
+  text-align: center;
+  max-width: none;
+  color: var(--text-primary);
+}
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.review-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: 0 4px 24px rgba(232,119,138,0.06);
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.review-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(212,85,107,0.12);
+}
+.review-stars {
+  display: flex;
+  gap: 4px;
+  color: #ffc107; /* gold/accent for stars */
+}
+.review-stars svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+.review-text {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  flex-grow: 1;
+}
+.review-author {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 8px;
+}
+
+
 /* ===================================================
    RESPONSIVE — Tablet (≤ 1024px)
    =================================================== */
@@ -1278,6 +1339,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   /* Products: 2 колонки на планшеті */
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .categories-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .bestsellers-section { padding: 72px 0; }
 }
 
@@ -1308,6 +1370,8 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   .trust-item span { font-size: 12px; }
   .products-grid { grid-template-columns: 1fr; gap: 14px; }
   .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .reviews-grid { grid-template-columns: 1fr; gap: 20px; }
+  .reviews-section { padding: 56px 0; }
   .categories-section { padding: 56px 0; }
   .bestsellers-section { padding: 56px 0; }
   .section { padding: 56px 0; }
