@@ -123,23 +123,23 @@ function createProductCard(product) {
     ? `<img src="${product.image}" alt="${product.name}" loading="lazy">`
     : `<div class="product-media-placeholder">${flowerSVG}<span>Фото скоро</span></div>`;
 
-  card.innerHTML = \`
+  card.innerHTML = `
     <div class="product-media">
-      \${mediaContent}
-      <button class="product-wishlist" aria-label="Додати до обраного" data-id="\${product.id}">
-        \${heartSVG}
+      ${mediaContent}
+      <button class="product-wishlist" aria-label="Додати до обраного" data-id="${product.id}">
+        ${heartSVG}
       </button>
     </div>
     <div class="product-body">
-      <div class="product-name">\${product.name}</div>
-      <div class="product-price">\${product.price.toLocaleString('uk-UA')} ₴</div>
+      <div class="product-name">${product.name}</div>
+      <div class="product-price">${product.price.toLocaleString('uk-UA')} ₴</div>
       <div class="product-card-footer">
-        <button class="btn-cart" data-id="\${product.id}">
-          \${cartSVG} В кошик
+        <button class="btn-cart" data-id="${product.id}">
+          ${cartSVG} В кошик
         </button>
       </div>
     </div>
-  \`;
+  `;
 
   // Click on card → open product modal
   card.addEventListener('click', function(e) {

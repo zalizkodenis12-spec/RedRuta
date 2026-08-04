@@ -139,21 +139,21 @@ document.addEventListener('DOMContentLoaded', () => {
         itemEl.className = 'cart-item';
         
         const imgHtml = item.image 
-          ? `<img src="\${item.image}" alt="\${item.name}">`
+          ? `<img src="${item.image}" alt="${item.name}">`
           : `<div class="cart-item-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg></div>`;
 
         itemEl.innerHTML = `
-          \${imgHtml}
+          ${imgHtml}
           <div class="cart-item-info">
-            <div class="cart-item-name">\${item.name}</div>
-            <div class="cart-item-price">\${item.price.toLocaleString('uk-UA')} ₴</div>
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">${item.price.toLocaleString('uk-UA')} ₴</div>
             <div class="cart-item-controls">
               <div class="qty-control qty-sm">
-                <button class="qty-btn" onclick="window.updateCartQty(\${index}, -1)">&minus;</button>
-                <input type="number" class="qty-input" value="\${item.qty}" readonly>
-                <button class="qty-btn" onclick="window.updateCartQty(\${index}, 1)">&plus;</button>
+                <button class="qty-btn" onclick="window.updateCartQty(${index}, -1)">&minus;</button>
+                <input type="number" class="qty-input" value="${item.qty}" readonly>
+                <button class="qty-btn" onclick="window.updateCartQty(${index}, 1)">&plus;</button>
               </div>
-              <button class="cart-item-remove" onclick="window.removeFromCart(\${index})" aria-label="Видалити">&times;</button>
+              <button class="cart-item-remove" onclick="window.removeFromCart(${index})" aria-label="Видалити">&times;</button>
             </div>
           </div>
         `;
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pmQtyInput.value = 1;
 
     if (product.image) {
-      pmImage.innerHTML = `<img src="\${product.image}" alt="\${product.name}">`;
+      pmImage.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
     } else {
       const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width:64px;height:64px;opacity:0.2;"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
       pmImage.innerHTML = flowerSVG;
