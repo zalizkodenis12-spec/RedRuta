@@ -250,6 +250,20 @@
     </div>
   </section>
 
+
+  <!-- CATEGORIES -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2 class="section-title">Оберіть букет за приводом</h2>
+        <p class="section-desc">Знайдіть ідеальний букет для будь-якої події</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Картки генеруються через JS -->
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES CAROUSEL -->
   <section class="section services-section" id="services" style="background: #ffffff;">
     <div class="container">
@@ -735,6 +749,36 @@
 
     // Trigger reveal animation for newly added cards
     if (typeof initReveal === 'function') initReveal();
+  })();
+</script>
+
+<script src="assets/js/categories.js"></script>
+<script>
+  // ===== Render Categories from CATEGORIES array =====
+  (function() {
+    const grid = document.getElementById('categoriesGrid');
+    if (!grid || typeof CATEGORIES === 'undefined') return;
+
+    const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
+
+    CATEGORIES.forEach(function(category) {
+      const card = document.createElement('a');
+      card.href = '/catalog/' + category.slug;
+      card.className = 'category-card reveal';
+
+      const mediaContent = category.image
+        ? `<img src="${category.image}" alt="${category.name}" loading="lazy">`
+        : `<div class="category-placeholder">${flowerSVG}</div>`;
+
+      card.innerHTML = `
+        <div class="category-media">
+          ${mediaContent}
+        </div>
+        <div class="category-title">${category.name}</div>
+      `;
+
+      grid.appendChild(card);
+    });
   })();
 </script>
 </body>
