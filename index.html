@@ -308,8 +308,8 @@
     <div class="hero-scrim"></div>
     <div class="container hero-inner">
 
-      <!-- Заголовок hero: Great Vibes, курсив, ліво -->
-      <h1 class="hero-title reveal" style="font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(3.5rem,8vw,6rem);font-style:italic;">Квіти з доставкою<br>за 60 хвилин</h1>
+      <!-- Заголовок hero: Playfair Display, курсив, ліво -->
+      <h1 class="hero-title reveal" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;">Квіти з доставкою<br>за 60 хвилин</h1>
       <!-- Підзаголовок: курсив, нахилений вправо, нежирний, звичайний шрифт -->
       <p class="hero-sub reveal" style="font-style:italic;font-weight:400;font-family:'Playfair Display',serif;transform:none;">
         Свіжі букети з доставкою по Вінниці &mdash;<br>
@@ -420,7 +420,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Швидка доставка</span>
-              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Доставимо букет за 60 хвилин по місту</span>
+              <span class="about-advantage-sub">Доставимо букет за 60 хвилин по місту</span>
             </div>
           </li>
 
@@ -430,7 +430,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Свіжі квіти щодня</span>
-              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Закуповуємо квіти щоранку на базі</span>
+              <span class="about-advantage-sub">Закуповуємо квіти щоранку на базі</span>
             </div>
           </li>
 
@@ -440,7 +440,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Флорист на зв'язку</span>
-              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Підкажемо і зберемо букет під ваш запит</span>
+              <span class="about-advantage-sub">Підкажемо і зберемо букет під ваш запит</span>
             </div>
           </li>
 
@@ -450,7 +450,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Оплата як зручно</span>
-              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Карткою онлайн або готівкою кур'єру</span>
+              <span class="about-advantage-sub">Карткою онлайн або готівкою кур'єру</span>
             </div>
           </li>
 
@@ -498,9 +498,10 @@
   </section>
 
 
-  <!-- MAP / CONTACTS -->
-  <section class="section contacts-section" id="contacts">
-    <div class="container contacts-grid">
+  <!-- MAP / CONTACTS: фон — фото з трояндами -->
+  <section class="section contacts-section" id="contacts" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
+    <div style="position:absolute;inset:0;background:rgba(255,255,255,0.85);z-index:0;"></div>
+    <div class="container contacts-grid" style="position:relative;z-index:1;">
       <div class="map-wrap reveal">
         <iframe
           src="https://www.google.com/maps?q=вул.+Трамвайна+3,+Вінниця&z=17&output=embed"
