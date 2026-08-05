@@ -1078,7 +1078,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 /* ===== About / Why Us ===== */
 .about-section {
   padding: 96px 0;
-  background: var(--surface);
+  background: #fce8ed !important;
 }
 /* Desktop: 2 columns 50/50 */
 .about-grid {
@@ -1260,7 +1260,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 }
 
 /* ===== Reviews ===== */
-.reviews-section { padding: 96px 0; background: var(--surface); }
+.reviews-section { padding: 96px 0; background: #fce8ed !important; }
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1291,8 +1291,11 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   letter-spacing: 3px;
   display: flex;
   gap: 4px;
+  justify-content: center;
+  width: 100%;
 }
 .review-stars svg { width: 20px; height: 20px; fill: currentColor; }
+.review-author { display: none !important; }
 .review-text {
   color: var(--text-secondary); font-family: var(--font-body);
   font-size: 14.5px; line-height: 1.7;
@@ -1384,8 +1387,16 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 /* ===== Footer ===== */
 .site-footer { background: var(--bg-elevated); border-top: 1px solid var(--border); padding: 44px 0 0; }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px; padding-bottom: 30px; }
-.footer-nav { display: flex; gap: 22px; flex-wrap: wrap; }
-.footer-nav a { color: var(--text-secondary); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; transition: color var(--transition); }
+.footer-nav { display: flex; gap: 22px; flex-wrap: wrap; align-items: center; }
+.footer-nav a {
+  color: var(--text-secondary);
+  font-family: 'Great Vibes', cursive !important;
+  font-size: 1.4rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em;
+  text-transform: none !important;
+  transition: color var(--transition);
+}
 .footer-nav a:hover { color: var(--accent); }
 .footer-socials { display: flex; gap: 10px; }
 .footer-socials a {

@@ -69,7 +69,7 @@
 /* ===== ABOUT COLLAGE: займає всю висоту блоку ===== */
 .about-section {
   padding: 96px 0;
-  background: var(--bg);
+  background: #fce8ed !important;
 }
 .about-grid {
   display: grid;
@@ -308,7 +308,8 @@
     <div class="hero-scrim"></div>
     <div class="container hero-inner">
 
-      <h1 class="hero-title reveal">Квіти з доставкою<br>за 60 хвилин</h1>
+      <!-- Заголовок hero: Great Vibes, курсив, ліво -->
+      <h1 class="hero-title reveal" style="font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(3.5rem,8vw,6rem);font-style:italic;">Квіти з доставкою<br>за 60 хвилин</h1>
       <!-- Підзаголовок: курсив, нахилений вправо, нежирний, звичайний шрифт -->
       <p class="hero-sub reveal" style="font-style:italic;font-weight:400;font-family:'Playfair Display',serif;transform:none;">
         Свіжі букети з доставкою по Вінниці &mdash;<br>
@@ -353,9 +354,10 @@
     </div>
   </section>
 
-  <!-- BESTSELLERS — 6 карток -->
-  <section class="bestsellers-section" id="catalog">
-    <div class="container">
+  <!-- BESTSELLERS — 6 карток: фон — фото з трояндами -->
+  <section class="bestsellers-section" id="catalog" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
+    <div style="position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0;"></div>
+    <div class="container" style="position:relative;z-index:1;">
       <div class="section-head reveal">
         <h2 class="section-title">Популярні букети</h2>
         <p class="section-desc">Свіжі квіти, які обирають найчастіше &mdash; для подарунка, святкування чи просто так</p>
@@ -418,7 +420,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Швидка доставка</span>
-              <span class="about-advantage-sub">Доставимо букет за 60 хвилин по місту</span>
+              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Доставимо букет за 60 хвилин по місту</span>
             </div>
           </li>
 
@@ -428,7 +430,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Свіжі квіти щодня</span>
-              <span class="about-advantage-sub">Закуповуємо квіти щоранку на базі</span>
+              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Закуповуємо квіти щоранку на базі</span>
             </div>
           </li>
 
@@ -438,7 +440,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Флорист на зв'язку</span>
-              <span class="about-advantage-sub">Підкажемо і зберемо букет під ваш запит</span>
+              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Підкажемо і зберемо букет під ваш запит</span>
             </div>
           </li>
 
@@ -448,7 +450,7 @@
             </div>
             <div class="about-advantage-text">
               <span class="about-advantage-title">Оплата як зручно</span>
-              <span class="about-advantage-sub">Карткою онлайн або готівкою кур'єру</span>
+              <span class="about-advantage-sub" style="font-family:'Great Vibes',cursive;font-size:1.15rem;font-weight:400;">Карткою онлайн або готівкою кур'єру</span>
             </div>
           </li>
 
@@ -468,9 +470,10 @@
   </section>
 
 
-  <!-- CATEGORIES: назва всередині фото -->
-  <section class="categories-section" id="categories">
-    <div class="container">
+  <!-- CATEGORIES: назва всередині фото; фон — фото з трояндами -->
+  <section class="categories-section" id="categories" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
+    <div style="position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0;"></div>
+    <div class="container" style="position:relative;z-index:1;">
       <div class="section-head reveal">
         <h2 class="section-title">Оберіть букет за приводом</h2>
         <p class="section-desc">Знайдіть ідеальний букет для будь-якої події</p>
@@ -549,11 +552,11 @@
 
 <footer class="site-footer">
   <div class="container footer-inner">
+    <!-- Тільки аватарка, без тексту D&D Flowers -->
     <a href="#top" class="logo" style="display:flex;align-items:center;gap:10px;">
       <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);flex-shrink:0;">
         <img src="assets/images/Аватарка для квіткового.png" alt="D&D Flowers" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
       </div>
-      <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--text-primary);">D&amp;D Flowers</span>
     </a>
     <nav class="footer-nav">
       <a href="#catalog">Каталог</a>
@@ -702,11 +705,10 @@
           ${photoIconSVG}
           <span>Фото букету</span>
         </div>
-        <!-- Тіло відгуку -->
+        <!-- Тіло відгуку — без імені -->
         <div class="review-body">
           <div class="review-stars">${starsHtml}</div>
           <p class="review-text">"${review.text}"</p>
-          <div class="review-author">${review.name}</div>
         </div>
       `;
 
