@@ -7,10 +7,73 @@
 <meta name="description" content="D&D Flowers у Вінниці. Свіжі квіти, букети та композиції з доставкою за 60 хвилин. Замовте букет: вул. Трамвайна, 3.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+/* Рукописний шрифт для навігації хедера */
+.nav-left a, .nav-right a {
+  font-family: 'Great Vibes', cursive !important;
+  font-size: 1.45rem !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+}
+/* Hero контент трохи лівіше */
+.hero-inner {
+  padding-left: 4%;
+}
+/* About collage: великий ліворуч + права колонка з двох маленьких */
+.about-collage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.about-collage-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.about-collage-item--big {
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fce8ed 0%, #f9d0d8 50%, #f4a7b8 100%);
+  aspect-ratio: 3 / 4;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about-collage-item--sm {
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fce8ed 0%, #f9d0d8 50%, #f4a7b8 100%);
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+}
+.about-collage-item--big img,
+.about-collage-item--sm img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Плейсхолдер SVG в колажі */
+.about-collage-ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+  opacity: 0.35;
+}
+.about-collage-ph svg { width: 40px; height: 40px; }
+</style>
 </head>
 <body>
 
@@ -34,11 +97,10 @@
       </a>
     </div>
 
-    <!-- Nav праворуч: 3 пункти -->
+    <!-- Nav праворуч: 2 пункти (без кнопки Замовити — замість неї кошик через JS) -->
     <nav class="nav-right" aria-label="Навігація праворуч">
       <a href="#reviews">Відгуки</a>
       <a href="#contacts">Контакти</a>
-      <a href="#catalog" class="btn btn-cta btn-sm" style="padding: 9px 20px; font-size: 12px;">Замовити</a>
     </nav>
 
     <!-- Бургер (тільки мобайл) -->
@@ -152,39 +214,36 @@
   <section class="about-section" id="about">
     <div class="container about-grid">
 
-      <!-- LEFT: Photo collage 2x2 (big + 3 small) -->
+      <!-- LEFT: Photo collage — великий ліворуч + 2 маленьких праворуч (як на референсі) -->
       <div class="about-collage reveal">
-
-        <!-- Big photo: spans 2 rows -->
-        <div class="about-collage-item about-collage-item--big">
-          <div class="about-collage-placeholder">
+        <!-- Великий зліва -->
+        <div class="about-collage-item--big">
+          <div class="about-collage-ph">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
               <path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 12 5-5 8-8 8-12 0-5-4-8-8-8z"/>
               <circle cx="12" cy="10" r="2.5"/>
             </svg>
           </div>
         </div>
-
-        <!-- Small top-right -->
-        <div class="about-collage-item about-collage-item--sm">
-          <div class="about-collage-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 12 5-5 8-8 8-12 0-5-4-8-8-8z"/>
-              <circle cx="12" cy="10" r="2.5"/>
-            </svg>
+        <!-- Права колонка: 2 маленьких -->
+        <div class="about-collage-right">
+          <div class="about-collage-item--sm">
+            <div class="about-collage-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 12 5-5 8-8 8-12 0-5-4-8-8-8z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+            </div>
+          </div>
+          <div class="about-collage-item--sm">
+            <div class="about-collage-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 12 5-5 8-8 8-12 0-5-4-8-8-8z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+            </div>
           </div>
         </div>
-
-        <!-- Small bottom-right -->
-        <div class="about-collage-item about-collage-item--sm">
-          <div class="about-collage-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-              <path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 12 5-5 8-8 8-12 0-5-4-8-8-8z"/>
-              <circle cx="12" cy="10" r="2.5"/>
-            </svg>
-          </div>
-        </div>
-
       </div>
 
       <!-- RIGHT: Text content -->
@@ -278,19 +337,18 @@
   </section>
 
 
-
   <!-- MAP / CONTACTS -->
   <section class="section contacts-section" id="contacts">
     <div class="container contacts-grid">
       <div class="map-wrap reveal">
         <iframe
-          src="https://www.google.com/maps?q=Стоматологія+МаксіДент,+Кам'янецька+вулиця,+105,+Хмельницький&z=17&output=embed"
+          src="https://www.google.com/maps?q=вул.+Трамвайна+3,+Вінниця&z=17&output=embed"
           width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade" title="Максі Дент на карті"></iframe>
+          referrerpolicy="no-referrer-when-downgrade" title="D&D Flowers на карті"></iframe>
       </div>
       <div class="contacts-info reveal" style="display: flex; flex-direction: column; justify-content: center; gap: 10px;">
-        <h3 style="margin-bottom: 0; font-size: 24px;">Запишіться на прийом</h3>
-        <p style="margin-bottom: 20px; color: var(--text-secondary); font-size: 15px;">Залиште заявку — ми зв'яжемося з вами найближчим часом.</p>
+        <h3 style="margin-bottom: 0; font-size: 24px;">Замовити букет</h3>
+        <p style="margin-bottom: 20px; color: var(--text-secondary); font-size: 15px;">Залиште заявку — наш флорист зв'яжеться з вами найближчим часом.</p>
         
         <form class="booking-form" id="bookingForm" novalidate style="margin: 0; max-width: 100%; width: 100%; box-shadow: none; padding: 0; background: transparent;">
           <div class="field" style="margin-bottom: 20px;">
@@ -304,96 +362,25 @@
             <span class="field-error" role="alert"></span>
           </div>
           <div class="field" style="margin-bottom: 20px;">
-            <label for="f-service">Послуга</label>
-            <select id="f-service" name="service" multiple style="width: 100%; padding: 16px; background: #ffffff; border: 1.5px solid var(--border); border-radius: 10px; color: var(--text-primary); font-family: var(--font-body); font-size: 15px; appearance: none; cursor: pointer;">
-              <option value="" disabled selected>Оберіть послугу...</option>
-              <optgroup label="Терапевтична стоматологія">
-                <option value="Консультація">Консультація (300 грн)</option>
-                <option value="Рентгендіагностика (візіограф)">Рентгендіагностика (візіограф) (200 грн)</option>
-                <option value="Ізоляція зуба кофердамом оптрагейт">Ізоляція зуба кофердамом оптрагейт (50 грн)</option>
-                <option value="Тимчасова пломба">Тимчасова пломба (300 грн)</option>
-                <option value="Ізолююча прокладка зі склоіономерного цементу">Ізолююча прокладка зі склоіономерного цементу (300 грн)</option>
-                <option value="Пломба поверхневий карієс">Пломба поверхневий карієс (1500 грн)</option>
-                <option value="Пломба середній карієс">Пломба середній карієс (1900 грн)</option>
-                <option value="Пломба глибокий карієс">Пломба глибокий карієс (2300 грн)</option>
-                <option value="Анестезія">Анестезія (250 грн)</option>
-                <option value="Професійна гігієна">Професійна гігієна (від 1700 гр грн)</option>
-                <option value="Покриття зуба фторвмісним препаратом">Покриття зуба фторвмісним препаратом (300 грн)</option>
-                <option value="Герметизація фісур (1 зуб)">Герметизація фісур (1 зуб) (800 грн)</option>
-                <option value="Реставрація переднього зуба">Реставрація переднього зуба (2500-4000 грн)</option>
-                <option value="Реставрація бокового зуба">Реставрація бокового зуба (2500-4000 грн)</option>
-                <option value="Реставрація культі зуба">Реставрація культі зуба (1500 -2000 грн)</option>
-                <option value="Встановлення дентальних стразів">Встановлення дентальних стразів (1800 грн)</option>
-                <option value="Шинування зубів за допомогою скловолоконної стрічки (1 зуб)">Шинування зубів за допомогою скловолоконної стрічки (1 зуб) (від 1000 грн)</option>
-                <option value="Фіксація скловолоконного штифта">Фіксація скловолоконного штифта (1000 грн)</option>
-                <option value="Фіксація анкерного штифта">Фіксація анкерного штифта (800 грн)</option>
-                <option value="Відбілювання однієї щелепи">Відбілювання однієї щелепи (від 3000 грн)</option>
-                <option value="Виготовлення адгезивного протезу">Виготовлення адгезивного протезу (4000 грн)</option>
-                <option value="Ретракція ясен">Ретракція ясен (50 грн)</option>
-              </optgroup>
-              <optgroup label="Ендодонтичне лікування">
-                <option value="Накладання девіталізуючої пасти">Накладання девіталізуючої пасти (200 грн)</option>
-                <option value="Розпломбування кореневого каналу">Розпломбування кореневого каналу (500 грн)</option>
-                <option value="Антисептична обробка і пломбування кореневого каналу гарячою гутаперчею">Антисептична обробка і пломбування кореневого каналу гарячою гутаперчею (1200 грн)</option>
-                <option value="Тимчасове пломбування кореневого каналу кальційвмісним препаратом">Тимчасове пломбування кореневого каналу кальційвмісним препаратом (500 грн)</option>
-                <option value="Закриття перфорації прорутом">Закриття перфорації прорутом (500 грн)</option>
-                <option value="Розширення кореневого каналу під куксову вкладку">Розширення кореневого каналу під куксову вкладку (200 грн)</option>
-                <option value="Видалення куксової вкладки">Видалення куксової вкладки (1500 грн)</option>
-                <option value="Вилучення анкерного штифта, скловолоконного">Вилучення анкерного штифта, скловолоконного (600 грн)</option>
-              </optgroup>
-              <optgroup label="Ортопедична стоматологія">
-                <option value="Виготовлення діагностичних моделей">Виготовлення діагностичних моделей (1000 грн)</option>
-                <option value="Зняття відбитку С-сілікон (1 щелепа)">Зняття відбитку С-сілікон (1 щелепа) (1000 грн)</option>
-                <option value="Зняття відбитку А-сілікон (1 щелепа)">Зняття відбитку А-сілікон (1 щелепа) (1250 грн)</option>
-                <option value="Зняття відбитку Альгінат (1 щелепа )">Зняття відбитку Альгінат (1 щелепа ) (750 грн)</option>
-                <option value="Виготовлення тимчасової коронки">Виготовлення тимчасової коронки (1000 грн)</option>
-                <option value="Суцільнолита коронка">Суцільнолита коронка (3200 грн)</option>
-                <option value="Металокерамічна коронка">Металокерамічна коронка (4800 грн)</option>
-                <option value="Цирконієва коронка">Цирконієва коронка (від 7500 грн)</option>
-                <option value="Прескераміка">Прескераміка (8500 грн)</option>
-                <option value="Вініри">Вініри (10000 грн)</option>
-                <option value="Вкладка куксова">Вкладка куксова (від 1500 грн)</option>
-                <option value="Протез акриловий">Протез акриловий (9500 грн)</option>
-                <option value="Протез бюгельний">Протез бюгельний (від 25000 грн)</option>
-                <option value="Ремонт протезу">Ремонт протезу (1000 грн)</option>
-                <option value="Перебазування протезу">Перебазування протезу (1000 грн)</option>
-                <option value="Зняття штампованої коронки">Зняття штампованої коронки (300 грн)</option>
-                <option value="Індивідуальна ложка">Індивідуальна ложка (800 грн)</option>
-                <option value="Цементування коронки цемент Fuji+">Цементування коронки цемент Fuji+ (200 грн)</option>
-                <option value="Цементування коронки подвійного затвердіння">Цементування коронки подвійного затвердіння (250 грн)</option>
-                <option value="Виготовлення нейлонового протеза">Виготовлення нейлонового протеза (11500 грн)</option>
-                <option value="Зняття литої,мк,цирконової коронки">Зняття литої,мк,цирконової коронки (800 грн)</option>
-              </optgroup>
-              <optgroup label="Ортодонтія">
-                <option value="Консультація">Консультація (200 грн)</option>
-                <option value="Металеві брекети ( 1 щелепа)">Металеві брекети ( 1 щелепа) (13500 грн)</option>
-                <option value="Керамічні брекети (1 щелепа)">Керамічні брекети (1 щелепа) (185 00 грн)</option>
-                <option value="Самолігуючі брекети (1 щелепа)">Самолігуючі брекети (1 щелепа) (22 000 грн)</option>
-                <option value="Елайнери">Елайнери (від 55 000 грн)</option>
-                <option value="Пластинка">Пластинка (від 3000 грн)</option>
-                <option value="Функціональні апарати">Функціональні апарати (від 4500 грн)</option>
-                <option value="Трейнери">Трейнери (5000 грн)</option>
-                <option value="Зняття відбитків">Зняття відбитків (1500 грн)</option>
-                <option value="Брекет контроль (1 щелепа)">Брекет контроль (1 щелепа) (600 грн)</option>
-                <option value="Контроль комплексний">Контроль комплексний (600 грн)</option>
-                <option value="Заміна дуги (1 щелепа)">Заміна дуги (1 щелепа) (600 грн)</option>
-              </optgroup>
-              <optgroup label="Імплантація">
-                <option value="Імплант Mega Gen Anyone (Пд. Корея)">Імплант Mega Gen Anyone (Пд. Корея) (16 500 грн)</option>
-                <option value="Імплант Mega Gen Anyridge (Пд. Корея)">Імплант Mega Gen Anyridge (Пд. Корея) (23 000 грн)</option>
-                <option value="Імплант Straumann (Швейцарія)">Імплант Straumann (Швейцарія) (25 000 грн)</option>
-                <option value="Синус - ліфтинг відкритий">Синус - ліфтинг відкритий (21 000 грн)</option>
-                <option value="Синус - ліфтинг закритий">Синус - ліфтинг закритий (12 500 грн)</option>
-                <option value="Забір аутокістки">Забір аутокістки (1500 грн)</option>
-                <option value="Формувач">Формувач (1500 грн)</option>
-              </optgroup>
+            <label for="f-occasion">Привід</label>
+            <select id="f-occasion" name="occasion" style="width: 100%; padding: 16px; background: #ffffff; border: 1.5px solid var(--border); border-radius: 10px; color: var(--text-primary); font-family: var(--font-body); font-size: 15px; appearance: none; -webkit-appearance: none; cursor: pointer;">
+              <option value="" disabled selected>Оберіть привід...</option>
+              <option value="День народження">День народження 🎂</option>
+              <option value="8 Березня">8 Березня 🌷</option>
+              <option value="День закоханих">День закоханих 💕</option>
+              <option value="Річниця">Річниця 💍</option>
+              <option value="Випускний">Випускний 🎓</option>
+              <option value="Для мами">Для мами 💗</option>
+              <option value="Без приводу">Просто так 🌸</option>
+              <option value="Корпоратив">Корпоратив 🏢</option>
+            </select>
             <span class="field-error" role="alert"></span>
           </div>
           <div class="field" style="margin-bottom: 24px;">
             <label for="f-comment">Побажання</label>
-            <textarea id="f-comment" name="comment" rows="2" placeholder="Будь-які побажання щодо прийому" style="padding: 16px;"></textarea>
+            <textarea id="f-comment" name="comment" rows="2" placeholder="Побажання щодо кольору, розміру, упаковки..." style="padding: 16px;"></textarea>
           </div>
-          <button type="submit" class="btn btn-cta btn-block" id="bookingSubmit" style="width: 100%; padding: 18px; font-size: 16px;">Надіслати заявку</button>
+          <button type="submit" class="btn btn-cta btn-block" id="bookingSubmit" style="width: 100%; padding: 18px; font-size: 16px;">Замовити букет</button>
           <p class="booking-status" id="bookingStatus" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -406,7 +393,7 @@
   <div class="container footer-inner">
     <a href="#top" class="logo" style="display:flex;align-items:center;gap:10px;">
       <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);flex-shrink:0;">
-        <img src="assets/images/Ава квітковий.png" alt="D&D Flowers" style="width:100%;height:100%;object-fit:cover;">
+        <img src="assets/images/Аватарка для квіткового.png" alt="D&D Flowers" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
       </div>
       <span style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--text-primary);">D&amp;D Flowers</span>
     </a>
@@ -427,8 +414,8 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© 2026 MaksiDent. Всі права захищено.</span>
-    <span>м. Хмельницький, вул. Кам'янецька, 105</span>
+    <span>&copy; 2026 D&amp;D Flowers. Всі права захищено.</span>
+    <span>м. Вінниця, вул. Трамвайна, 3</span>
   </div>
 </footer>
 
@@ -449,12 +436,10 @@
     faqItems.forEach(item => {
       item.addEventListener('click', () => {
         const isExpanded = item.getAttribute('aria-expanded') === 'true';
-        // Close all others
         faqItems.forEach(otherItem => {
           otherItem.setAttribute('aria-expanded', 'false');
           otherItem.nextElementSibling.style.maxHeight = null;
         });
-        // Toggle current
         if (!isExpanded) {
           item.setAttribute('aria-expanded', 'true');
           const answer = item.nextElementSibling;
@@ -473,23 +458,16 @@
     const grid = document.getElementById('productsGrid');
     if (!grid || typeof PRODUCTS === 'undefined') return;
 
-    // Heart SVG outline
-    const heartSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-
-    // Cart SVG
-    const cartSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
-
-    // Placeholder flower SVG
-    const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
-
     PRODUCTS.forEach(function(product) {
       if (typeof createProductCard === 'function') {
-        grid.appendChild(createProductCard(product));
+        const card = createProductCard(product);
+        // Прибираємо reveal — картки відразу видимі
+        card.classList.remove('reveal');
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        grid.appendChild(card);
       }
     });
-
-    // Trigger reveal animation for newly added cards
-    if (typeof initReveal === 'function') initReveal();
   })();
 </script>
 
@@ -505,7 +483,8 @@
     CATEGORIES.forEach(function(category) {
       const card = document.createElement('a');
       card.href = '/catalog/' + category.slug;
-      card.className = 'category-card reveal';
+      // Без reveal — відразу видимі
+      card.className = 'category-card';
 
       const mediaContent = category.image
         ? `<img src="${category.image}" alt="${category.name}" loading="lazy">`
@@ -530,11 +509,13 @@
     const grid = document.getElementById('reviewsGrid');
     if (!grid || typeof REVIEWS === 'undefined') return;
 
-    const starSVG = `<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
+    // Зірочка золота із заливкою
+    const starSVG = `<svg viewBox="0 0 24 24" fill="#ffc107" width="20" height="20"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;
 
     REVIEWS.forEach(function(review) {
       const card = document.createElement('div');
-      card.className = 'review-card reveal';
+      // Без reveal — відразу видимі
+      card.className = 'review-card';
 
       let starsHtml = '';
       for(let i=0; i<review.rating; i++) {
@@ -550,6 +531,93 @@
       `;
 
       grid.appendChild(card);
+    });
+  })();
+</script>
+
+<script>
+  // Обробник форми замовлення квітів
+  (function() {
+    const form = document.getElementById('bookingForm');
+    if (!form) return;
+    const submitBtn = document.getElementById('bookingSubmit');
+    const statusEl = document.getElementById('bookingStatus');
+    const cfg = window.SITE_CONFIG || {};
+
+    const setFieldError = (field, message) => {
+      field.setAttribute('aria-invalid', message ? 'true' : 'false');
+      const errorEl = field.parentElement.querySelector('.field-error');
+      if (errorEl) errorEl.textContent = message || '';
+    };
+
+    form.querySelectorAll('input, textarea').forEach((field) => {
+      field.addEventListener('input', () => setFieldError(field, ''));
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = form.name.value.trim();
+      const phone = form.phone.value.trim();
+      const occasion = form.occasion ? form.occasion.value : '';
+      const comment = form.comment.value.trim();
+
+      let firstInvalid = null;
+
+      if (!name || name.length < 2) {
+        setFieldError(form.name, "Ім'я повинно містити мінімум 2 символи");
+        firstInvalid = firstInvalid || form.name;
+      }
+      if (!phone) {
+        setFieldError(form.phone, 'Вкажіть номер телефону');
+        firstInvalid = firstInvalid || form.phone;
+      } else if (phone.replace(/\D/g, '').length < 10) {
+        setFieldError(form.phone, 'Перевірте формат номера (мінімум 10 цифр)');
+        firstInvalid = firstInvalid || form.phone;
+      }
+
+      if (firstInvalid) {
+        firstInvalid.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Надсилаємо…';
+      statusEl.textContent = '';
+      statusEl.className = 'booking-status';
+
+      const text = [
+        '🌸 Нова заявка з сайту D&D Flowers',
+        '',
+        `Ім'я: ${name}`,
+        `Телефон: ${phone}`,
+        `Привід: ${occasion || '—'}`,
+        `Побажання: ${comment || '—'}`
+      ].join('\n');
+
+      try {
+        if (!cfg.telegramBotToken || cfg.telegramBotToken.includes('PASTE_')) {
+          throw new Error('not-configured');
+        }
+
+        const response = await fetch(`https://api.telegram.org/bot${cfg.telegramBotToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: cfg.telegramChatId, text })
+        });
+
+        if (!response.ok) throw new Error('bad-response');
+
+        form.reset();
+        statusEl.textContent = "Дякуємо! Флорист зв'яжеться з вами найближчим часом. 🌷";
+        statusEl.className = 'booking-status success';
+      } catch (err) {
+        statusEl.innerHTML = `Не вдалося надіслати. Зателефонуйте напряму: <a href="tel:${cfg.phone || '+380974382519'}">${cfg.phoneDisplay || '+380 97 438 25 19'}</a>`;
+        statusEl.className = 'booking-status error';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Замовити букет';
+      }
     });
   })();
 </script>
