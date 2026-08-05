@@ -10,6 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;900&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <style>
 /* ===== ХЕДЕР: рукописний шрифт навігації ===== */
@@ -308,7 +309,7 @@
     </div>
     <div class="hero-scrim"></div>
     <div class="container hero-inner">
-      <div style="max-width: 55%; padding-left: 4%;">
+      <div style="max-width: 55%; margin-left: 25%;">
         <!-- Заголовок hero: Playfair Display, курсив, ліво -->
         <h1 class="hero-title reveal" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;">Квіти з<br>доставкою<br>за 60 хвилин</h1>
         <!-- Підзаголовок: курсив, нахилений вправо, нежирний, звичайний шрифт -->
@@ -357,7 +358,7 @@
   </section>
 
   <!-- BESTSELLERS — 6 карток: фон — фото з трояндами -->
-  <section class="bestsellers-section" id="catalog" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
+  <section class="bestsellers-section" id="catalog" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;" data-aos="fade-up" data-aos-duration="1000">
     <div style="position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0;"></div>
     <div class="container" style="position:relative;z-index:1;">
       <div class="section-head reveal">
@@ -473,7 +474,7 @@
 
 
   <!-- CATEGORIES: назва всередині фото; фон — фото з трояндами -->
-  <section class="categories-section" id="categories" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
+  <section class="categories-section" id="categories" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;" data-aos="zoom-in-up" data-aos-duration="1000">
     <div style="position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0;"></div>
     <div class="container" style="position:relative;z-index:1;">
       <div class="section-head reveal">
@@ -488,7 +489,7 @@
 
 
   <!-- REVIEWS: фото-плейсхолдер зверху -->
-  <section class="reviews-section" id="reviews">
+  <section class="reviews-section" id="reviews" data-aos="fade-up" data-aos-duration="1000">
     <div class="container">
       <div class="section-head reveal">
         <h2 class="section-title">Що кажуть наші клієнти</h2>
@@ -778,6 +779,19 @@
       }
     });
   })();
+</script>
+
+<!-- AOS Scroll Animations -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    offset: 120, // offset (in px) from the original trigger point
+    delay: 0, // values from 0 to 3000, with step 50ms
+    duration: 800, // values from 0 to 3000, with step 50ms
+    easing: 'ease', // default easing for AOS animations
+    once: false, // whether animation should happen only once - while scrolling down
+    mirror: true, // whether elements should animate out while scrolling past them
+  });
 </script>
 </body>
 </html>
