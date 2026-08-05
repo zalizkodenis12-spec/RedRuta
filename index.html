@@ -308,8 +308,8 @@
       <img src="assets/images/Massive_red_roses_bouquet_2K_202608042250.jpeg" alt="D&amp;D Flowers — букет червоних троянд" loading="eager">
     </div>
     <div class="hero-scrim"></div>
-    <div class="container hero-inner">
-      <div style="max-width: 55%; margin-left: 25%;">
+    <div class="container hero-inner" style="display: flex; justify-content: flex-end;">
+      <div style="max-width: 600px; margin-right: 5%; padding-top: 40px;">
         <!-- Заголовок hero: Playfair Display, курсив, ліво -->
         <h1 class="hero-title reveal" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;">Квіти з<br>доставкою<br>за 60 хвилин</h1>
         <!-- Підзаголовок: курсив, нахилений вправо, нежирний, звичайний шрифт -->
@@ -358,7 +358,7 @@
   </section>
 
   <!-- BESTSELLERS — 6 карток: фон — фото з трояндами -->
-  <section class="bestsellers-section" id="catalog" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;" data-aos="fade-up" data-aos-duration="1000">
+  <section class="bestsellers-section" id="catalog" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
     <div style="position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0;"></div>
     <div class="container" style="position:relative;z-index:1;">
       <div class="section-head reveal">
@@ -474,7 +474,7 @@
 
 
   <!-- CATEGORIES: назва всередині фото; фон — фото з трояндами -->
-  <section class="categories-section" id="categories" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;" data-aos="zoom-in-up" data-aos-duration="1000">
+  <section class="categories-section" id="categories" style="background-image:url('assets/images/Рози на білому фоні.jpeg');background-size:cover;background-position:center;background-repeat:no-repeat;position:relative;">
     <div style="position:absolute;inset:0;background:rgba(255,255,255,0.82);z-index:0;"></div>
     <div class="container" style="position:relative;z-index:1;">
       <div class="section-head reveal">
@@ -489,7 +489,7 @@
 
 
   <!-- REVIEWS: фото-плейсхолдер зверху -->
-  <section class="reviews-section" id="reviews" data-aos="fade-up" data-aos-duration="1000">
+  <section class="reviews-section" id="reviews">
     <div class="container">
       <div class="section-head reveal">
         <h2 class="section-title">Що кажуть наші клієнти</h2>
@@ -631,6 +631,8 @@
         card.classList.remove('reveal');
         card.style.opacity = '1';
         card.style.transform = 'translateY(0)';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-duration', '800');
         grid.appendChild(card);
       }
     });
@@ -654,6 +656,8 @@
       card.setAttribute('data-slug', category.slug);
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');
+      card.setAttribute('data-aos', 'zoom-in');
+      card.setAttribute('data-aos-duration', '600');
 
       const mediaContent = category.image
         ? `<img src="${category.image}" alt="${category.name}" loading="lazy">`
@@ -699,6 +703,9 @@
     REVIEWS.forEach(function(review, index) {
       const card = document.createElement('div');
       card.className = 'review-card';
+      card.setAttribute('data-aos', 'fade-up');
+      card.setAttribute('data-aos-delay', (index % 3) * 100);
+      card.setAttribute('data-aos-duration', '800');
 
       let starsHtml = '';
       for(let i=0; i<review.rating; i++) starsHtml += starSVG;
