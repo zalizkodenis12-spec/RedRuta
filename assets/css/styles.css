@@ -1078,7 +1078,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 /* ===== About / Why Us ===== */
 .about-section {
   padding: 96px 0;
-  background: var(--bg);
+  background: var(--surface);
 }
 /* Desktop: 2 columns 50/50 */
 .about-grid {
@@ -1260,7 +1260,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 }
 
 /* ===== Reviews ===== */
-.reviews-section { padding: 96px 0; background: var(--bg); }
+.reviews-section { padding: 96px 0; background: var(--surface); }
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
