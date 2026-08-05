@@ -1795,7 +1795,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   will-change: transform, opacity;
 }
 .reveal.is-hidden-up {
-  transform: translateY(-40px);
+  transform: translateY(40px);
 }
 .reveal.is-hidden-down, .reveal:not(.is-visible):not(.is-hidden-up) {
   transform: translateY(40px);
