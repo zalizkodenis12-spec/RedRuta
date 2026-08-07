@@ -86,23 +86,7 @@
           </button>
         </div>
 
-        <!-- Доставка -->
-        <div class="pm-delivery">
-          <div class="pm-delivery-item">
-            ${SVG_TRUCK}
-            <div>
-              <strong>Доставка по Вінниці</strong>
-              <span>За 60 хвилин · Безкоштовно від 1000 ₴</span>
-            </div>
-          </div>
-          <div class="pm-delivery-item">
-            ${SVG_CLOCK}
-            <div>
-              <strong>Графік роботи</strong>
-              <span>Пн–Нд: 10:00–19:00</span>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div><!-- /.pm-body -->
 
@@ -113,7 +97,13 @@
     </div>
 
   </div><!-- /.pm-box -->
-</div><!-- /.pm-overlay -->`;
+</div><!-- /.pm-overlay -->
+
+<!-- Lightbox для фотографій -->
+<div class="pm-lightbox" id="pmLightbox" role="dialog" aria-modal="true">
+  <button class="pm-lightbox-close" id="pmLightboxClose" aria-label="Закрити фотографію">&times;</button>
+  <img class="pm-lightbox-img" id="pmLightboxImg" src="" alt="">
+</div>`;
 
   document.body.appendChild(modalEl.firstElementChild);
 
@@ -319,15 +309,8 @@
     }
     buildThumbs();
 
-    // Бейдж
-    const BADGE_LABEL = { hit: 'Хіт', new: 'Новинка', sale: 'Знижка' };
-    if (product.badge) {
-      badgeEl.textContent = BADGE_LABEL[product.badge] || '';
-      badgeEl.className = `pm-badge pm-badge--${product.badge}`;
-      badgeEl.style.display = 'inline-block';
-    } else {
-      badgeEl.style.display = 'none';
-    }
+    // Бейджі прибрані за бажанням користувача
+    if (badgeEl) badgeEl.style.display = 'none';
 
     // Назва
     titleEl.textContent = product.name;
@@ -350,8 +333,8 @@
 
     // Акордеон
     buildAccordion([
-      { title: '🌸 Склад букета',     content: product.composition || '' },
-      { title: '🌿 Догляд за квітами', content: product.careInfo    || '' },
+      { title: 'Склад букета',     content: product.composition || '' },
+      { title: 'Догляд за квітами', content: product.careInfo    || '' },
     ]);
 
     // Розміри
@@ -404,13 +387,45 @@
     }
   }, { passive: true });
 
+  // ─── Lightbox ────────────────────────────────────────────────
+  const lightbox = document.getElementById('pmLightbox');
+  const lightboxImg = document.getElementById('pmLightboxImg');
+  const lightboxClose = document.getElementById('pmLightboxClose');
+
+  function openLightbox() {
+    if (!allPhotos[currentPhotoIdx]) return;
+    lightboxImg.src = allPhotos[currentPhotoIdx];
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+  }
+
+  galleryMain.addEventListener('click', (e) => {
+    // Не відкриваємо lightbox якщо клікнули на стрілку
+    if (e.target.closest('.pm-gallery-arrow')) return;
+    openLightbox();
+  });
+  
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
   // ─── Close listeners ─────────────────────────────────────────
   closeBtn.addEventListener('click', closeModal);
   overlay.addEventListener('click', e => {
     if (e.target === overlay) closeModal();
   });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    if (e.key === 'Escape') {
+      if (lightbox && lightbox.classList.contains('open')) {
+        closeLightbox();
+      } else if (overlay.classList.contains('open')) {
+        closeModal();
+      }
+    }
   });
 
   // ─── Public API ──────────────────────────────────────────────

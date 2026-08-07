@@ -10,12 +10,9 @@ const PRODUCTS = [
     name: "15 Червоних Троянд",
     price: 1250,
     oldPrice: 1550,
-    badge: 'sale',
-    image: "assets/images/Massive_red_roses_bouquet_2K_202608042250.jpeg",
-    images: [
-      "assets/images/Massive_red_roses_bouquet_2K_202608042250.jpeg",
-      "assets/images/Рози на білому фоні.jpeg"
-    ],
+    badge: null,
+    image: "",
+    images: [],
     slug: "15-chervonykh-troiand",
     color: "Червоний", type: "Троянда", categorySlug: "valentines",
     sales: 180, dateAdded: "2026-01-10",
@@ -70,12 +67,9 @@ const PRODUCTS = [
     id: 5,
     name: "Преміум 51 Троянда",
     price: 3800,
-    oldPrice: null, badge: 'hit',
-    image: "assets/images/Рози на білому фоні.jpeg",
-    images: [
-      "assets/images/Рози на білому фоні.jpeg",
-      "assets/images/Massive_red_roses_bouquet_2K_202608042250.jpeg"
-    ],
+    oldPrice: null, badge: null,
+    image: "",
+    images: [],
     slug: "premium-51-troyanda",
     color: "Червоний", type: "Троянда", categorySlug: "anniversary",
     sales: 300, dateAdded: "2026-01-20",
@@ -144,7 +138,7 @@ const PRODUCTS = [
     id: 10,
     name: "Рожевий сад",
     price: 980,
-    oldPrice: 1200, badge: 'sale',
+    oldPrice: 1200, badge: null,
     image: "", images: [],
     slug: "rozhevyi-sad",
     color: "Рожевий", type: "Троянда", categorySlug: "birthday",
@@ -187,9 +181,9 @@ const PRODUCTS = [
     id: 13,
     name: "Троянди з Гортензією",
     price: 1650,
-    oldPrice: null, badge: 'hit',
-    image: "assets/images/Massive_red_roses_bouquet_2K_202608042250.jpeg",
-    images: ["assets/images/Massive_red_roses_bouquet_2K_202608042250.jpeg"],
+    oldPrice: null, badge: null,
+    image: "",
+    images: [],
     slug: "troyand-hortenzia",
     color: "Рожевий", type: "Троянда", categorySlug: "valentines",
     sales: 140, dateAdded: "2026-02-05",
@@ -217,7 +211,7 @@ const PRODUCTS = [
     id: 15,
     name: "Букет «Захід сонця»",
     price: 1100,
-    oldPrice: 1350, badge: 'sale',
+    oldPrice: 1350, badge: null,
     image: "", images: [],
     slug: "buket-zakhid-sontsia",
     color: "Мікс", type: "Троянда", categorySlug: "for-mom",
@@ -280,11 +274,6 @@ function createProductCard(product) {
     mediaHtml = flowerPlaceholder;
   }
 
-  // ── Бейдж (зверху зліва) ──────────────────────────────────
-  const BADGE_LABEL = { hit: 'Хіт', new: 'Новинка', sale: 'Знижка' };
-  const badgeHtml = product.badge
-    ? `<span class="pcard-badge pcard-badge--${product.badge}">${BADGE_LABEL[product.badge]}</span>`
-    : '';
 
   // ── Ціна ──────────────────────────────────────────────────
   const discountPct = product.oldPrice
@@ -309,7 +298,6 @@ function createProductCard(product) {
   card.innerHTML = `
     <div class="product-media">
       ${mediaHtml}
-      ${badgeHtml}
       <button class="product-wishlist" aria-label="Додати до обраного" data-id="${product.id}" type="button">
         ${heartSVG}
       </button>
