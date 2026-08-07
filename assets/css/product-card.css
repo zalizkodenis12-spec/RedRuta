@@ -266,22 +266,21 @@
 
 /* Close */
 .pm-close {
-  position: sticky;
-  top: 16px;
-  left: calc(100% - 52px);
-  float: right;
+  position: absolute;
+  top: 14px;
+  right: 14px;
   width: 38px; height: 38px;
   border-radius: 50%;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0,0,0,0.05);
   font-size: 20px; line-height: 1;
   color: var(--text-secondary);
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: background var(--transition), color var(--transition), transform var(--transition);
-  z-index: 10;
-  margin: 14px 14px 0 0;
-  flex-shrink: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 .pm-close:hover { background: var(--accent); color: #fff; transform: rotate(90deg); }
 
@@ -647,8 +646,8 @@
   .pm-body {
     grid-template-columns: 1fr;
   }
-  .pm-gallery { padding: 16px 16px 10px; }
-  .pm-gallery-main { aspect-ratio: 4/3; }
+  .pm-gallery { padding: 0; }
+  .pm-gallery-main { aspect-ratio: 1/1; border-radius: 22px 22px 0 0; }
   .pm-info {
     border-left: none;
     border-top: 1px solid var(--border);

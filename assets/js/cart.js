@@ -83,6 +83,11 @@ document.addEventListener('DOMContentLoaded', () => {
       badge.textContent = totalItems;
       badge.style.display = totalItems > 0 ? 'flex' : 'none';
     }
+    const bottomNavBadge = document.getElementById('bottomNavCartBadge');
+    if (bottomNavBadge) {
+      bottomNavBadge.textContent = totalItems;
+      bottomNavBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
 
     // Render Cart Items
     cartDrawerBody.innerHTML = '';
@@ -183,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- 5. EVENT LISTENERS ---
   if (headerCartBtn) headerCartBtn.addEventListener('click', openCartDrawer);
+  const mobileNavCartBtn = document.getElementById('mobileNavCartBtn');
+  if (mobileNavCartBtn) mobileNavCartBtn.addEventListener('click', openCartDrawer);
+  
   if (cartDrawerClose) cartDrawerClose.addEventListener('click', closeCartDrawer);
   if (cartDrawerOverlay) cartDrawerOverlay.addEventListener('click', (e) => {
     if (e.target === cartDrawerOverlay) closeCartDrawer();

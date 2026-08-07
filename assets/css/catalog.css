@@ -804,10 +804,23 @@
   .catalog-controls {
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 12px;
   }
-  .catalog-search-wrap, .catalog-sort-wrap {
+  .catalog-search-wrap {
     width: 100%;
+    order: 1;
   }
+  .catalog-sort-wrap {
+    width: calc(50% - 6px);
+    order: 2;
+  }
+  .catalog-filter-mobile-btn {
+    width: calc(50% - 6px);
+    order: 3;
+    padding: 11px 12px;
+    margin-top: 0;
+  }
+  .catalog-sort { width: 100%; }
   .catalog-search { width: 100%; }
   
   .catalog-grid {
