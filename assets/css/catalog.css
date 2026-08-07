@@ -807,16 +807,16 @@
     gap: 12px;
   }
   .catalog-search-wrap {
-    width: 100%;
+    flex: 0 0 100%;
     order: 1;
   }
   .catalog-sort-wrap {
-    width: calc(50% - 6px);
-    order: 2;
+    flex: 0 0 calc(50% - 6px);
+    order: 3;
   }
   .catalog-filter-mobile-btn {
-    width: calc(50% - 6px);
-    order: 3;
+    flex: 0 0 calc(50% - 6px);
+    order: 2;
     padding: 11px 12px;
     margin-top: 0;
   }
