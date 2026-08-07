@@ -328,6 +328,84 @@
   gap: 24px;
 }
 
+/* ===== CATALOG CONTROLS (Search & Sort) ===== */
+.catalog-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.catalog-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+.catalog-search-wrap svg {
+  position: absolute;
+  left: 16px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+.catalog-search {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--text-primary);
+  background: #ffffff;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.catalog-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+.catalog-search::placeholder { color: var(--text-muted); }
+
+.catalog-sort-wrap {
+  flex-shrink: 0;
+}
+.catalog-sort {
+  padding: 12px 38px 12px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: #ffffff;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%236b3d48" viewBox="0 0 24 24" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.catalog-sort:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Mobile filter button — shown only on mobile */
+.catalog-filter-mobile-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
 /* ===== PRODUCT GRID (catalog) ===== */
 .catalog-grid {
   display: grid;

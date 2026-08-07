@@ -25,7 +25,6 @@
 
   // ─── DOM Елементи ────────────────────────────────────────
   const grid = document.getElementById('catalogGrid');
-  const highlightsContainer = document.getElementById('catalogHighlights');
   const emptyState = document.getElementById('catalogEmpty');
   
   const searchInput = document.getElementById('catalogSearch');
@@ -51,40 +50,7 @@
     };
   }
 
-  // ─── Highlights (Категорії) ──────────────────────────────
-  function setupHighlights() {
-    if (!highlightsContainer || typeof CATEGORIES === 'undefined') return;
-    highlightsContainer.innerHTML = '';
 
-    const ALL_HL = { name: 'Всі', slug: 'all', image: '' };
-    const items = [ALL_HL, ...CATEGORIES];
-
-    // Flower SVG fallback
-    const svgIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
-
-    items.forEach(cat => {
-      const el = document.createElement('div');
-      el.className = 'highlight-item' + (cat.slug === activeCategory ? ' active' : '');
-      el.setAttribute('data-slug', cat.slug);
-      
-      const media = cat.image 
-        ? `<img src="${cat.image}" alt="${cat.name}">` 
-        : svgIcon;
-
-      el.innerHTML = `
-        <div class="highlight-img-wrap">${media}</div>
-        <div class="highlight-title">${cat.name}</div>
-      `;
-
-      el.addEventListener('click', () => {
-        activeCategory = cat.slug;
-        document.querySelectorAll('.highlight-item').forEach(i => i.classList.toggle('active', i.getAttribute('data-slug') === activeCategory));
-        applyFilters();
-      });
-
-      highlightsContainer.appendChild(el);
-    });
-  }
 
   // ─── Accordions ──────────────────────────────────────────
   function setupAccordions() {
@@ -441,7 +407,6 @@
       activeCategory = urlCat;
     }
 
-    setupHighlights();
     setupAccordions();
     
     setupDualSlider('priceSlider', 'priceMin', 'priceMax', 'priceRangeTrack', 'priceRangeMin', 'priceRangeMax', (min, max) => {
