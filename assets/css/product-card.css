@@ -194,12 +194,6 @@
   transform: scale(0.97) !important;
   box-shadow: none !important;
 }
-.pcard-cart-btn--added,
-.btn-cart--added {
-  background: #3d7c3d !important;
-  color: #fff !important;
-  border-color: #3d7c3d !important;
-}
 
 /* footer override */
 .product-card-footer {
@@ -552,7 +546,6 @@
 }
 .pm-cart-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 8px 26px rgba(212,85,107,0.38); }
 .pm-cart-btn:active { transform: scale(0.97); box-shadow: none; }
-.pm-cart-btn--added { background: #3d7c3d !important; box-shadow: none !important; }
 
 /* Lightbox */
 .pm-lightbox {
