@@ -2240,3 +2240,8 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   
   .cart-drawer { width: 100%; }
 }
+
+/* ===== GLOBAL HEADER FONTS (GREAT VIBES) ===== */
+.nav-left a, .nav-right a, .header-cart-btn { font-family: 'Great Vibes', cursive !important; font-size: 1.45rem !important; letter-spacing: 0.01em !important; text-transform: none !important; font-weight: 400 !important; }
+.header-cart-btn svg { width: 24px !important; height: 24px !important; stroke-width: 1.5 !important; }
+
