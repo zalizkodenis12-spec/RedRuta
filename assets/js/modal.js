@@ -105,7 +105,9 @@
   <img class="pm-lightbox-img" id="pmLightboxImg" src="" alt="">
 </div>`;
 
-  document.body.appendChild(modalEl.firstElementChild);
+  while (modalEl.firstChild) {
+    document.body.appendChild(modalEl.firstChild);
+  }
 
   // ─── DOM refs ────────────────────────────────────────────────
   const overlay      = document.getElementById('pmOverlay');
