@@ -284,11 +284,6 @@ function createProductCard(product) {
        <span class="pcard-discount">−${discountPct}%</span>`
     : '';
 
-  // ── Склад ─────────────────────────────────────────────────
-  const compositionHtml = product.composition
-    ? `<p class="pcard-composition">${product.composition}</p>`
-    : '';
-
   // ── Збираємо картку ───────────────────────────────────────
   const card = document.createElement('article');
   card.className = 'product-card';
@@ -304,7 +299,6 @@ function createProductCard(product) {
     </div>
     <div class="product-body">
       <p class="product-name">${product.name}</p>
-      ${compositionHtml}
       <div class="pcard-price-row">
         <span class="product-price">${product.price.toLocaleString('uk-UA')} ₴</span>
         ${oldPriceHtml}
