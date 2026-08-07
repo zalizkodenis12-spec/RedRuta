@@ -165,93 +165,10 @@
     }
   }
 
-  // ─── Картка товару (розширена) ─────────────────────────────
+  // ─── Картка товару ─────────────────────────────────────────
+  // Використовуємо глобальний createProductCard з products.js
   function buildCatalogCard(product) {
-    const heartSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-    const cartSVG  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
-    const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width:52px;height:52px;opacity:0.35"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
-
-    // Визначаємо медіа (фото/плейсхолдер)
-    const images = product.images || (product.image ? [product.image] : []);
-    const primaryImg = images[0] || product.image || '';
-    const hoverImg   = images[1] || '';
-
-    let mediaHtml;
-    if (primaryImg) {
-      mediaHtml = `
-        <img class="product-img-primary" src="${primaryImg}" alt="${product.name}" loading="lazy">
-        ${hoverImg ? `<img class="product-img-hover" src="${hoverImg}" alt="${product.name}" loading="lazy" aria-hidden="true">` : ''}
-      `;
-    } else {
-      mediaHtml = `<div class="product-media-placeholder">${flowerSVG}<span>Фото скоро</span></div>`;
-    }
-
-    // Бейдж
-    const badge = getBadge(product);
-    const badgeHtml = badge === 'hit'
-      ? `<span class="product-badge badge-hit">Хіт</span>`
-      : badge === 'new'
-        ? `<span class="product-badge badge-new">Новинка</span>`
-        : '';
-
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.setAttribute('data-id', product.id);
-
-    card.innerHTML = `
-      <div class="product-media">
-        ${mediaHtml}
-        ${badgeHtml}
-        <button class="product-wishlist" aria-label="Додати до обраного" data-id="${product.id}">
-          ${heartSVG}
-        </button>
-      </div>
-      <div class="product-body">
-        <div class="product-name">${product.name}</div>
-        <div class="product-price">${product.price.toLocaleString('uk-UA')} ₴</div>
-        <div class="product-card-footer">
-          <button class="btn-cart" data-id="${product.id}">
-            ${cartSVG} В кошик
-          </button>
-        </div>
-      </div>
-    `;
-
-    // Click on card → modal
-    card.addEventListener('click', function (e) {
-      if (e.target.closest('.product-wishlist') || e.target.closest('.btn-cart')) return;
-      if (typeof window.openProductModal === 'function') {
-        window.openProductModal(product.id);
-      }
-    });
-
-    // Wishlist
-    const wishBtn = card.querySelector('.product-wishlist');
-    wishBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      this.classList.toggle('active');
-      const isActive = this.classList.contains('active');
-      this.setAttribute('aria-label', isActive ? 'Видалити з обраного' : 'Додати до обраного');
-    });
-
-    // Add to cart
-    const cartBtn = card.querySelector('.btn-cart');
-    cartBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (typeof window.addToCart === 'function') {
-        window.addToCart(product.id, 1);
-        this.innerHTML = '✓ Додано';
-        this.style.background = 'var(--accent)';
-        this.style.color = '#ffffff';
-        setTimeout(() => {
-          this.innerHTML = cartSVG + ' В кошик';
-          this.style.background = '';
-          this.style.color = '';
-        }, 1800);
-      }
-    });
-
-    return card;
+    return createProductCard(product);
   }
 
   // ─── Stagger-анімація при появі карток ────────────────────

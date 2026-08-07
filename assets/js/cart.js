@@ -35,30 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const globalUI = document.createElement('div');
   globalUI.id = 'globalUIContainer';
   globalUI.innerHTML = `
-    <!-- Product Modal -->
-    <div class="modal-overlay" id="productModalOverlay">
-      <div class="product-modal">
-        <button class="modal-close" id="productModalClose" aria-label="Закрити">&times;</button>
-        <div class="product-modal-grid">
-          <div class="pm-image" id="pmImage"></div>
-          <div class="pm-info">
-            <h2 class="pm-title" id="pmTitle">Назва товару</h2>
-            <div class="pm-price" id="pmPrice">0 ₴</div>
-            <p class="pm-desc" id="pmDesc">Ідеальний букет для ваших найрідніших. Свіжі квіти, професійна збірка, стильне пакування.</p>
-            
-            <div class="pm-controls">
-              <div class="qty-control">
-                <button class="qty-btn" id="pmQtyMinus">&minus;</button>
-                <input type="number" class="qty-input" id="pmQtyInput" value="1" min="1" readonly>
-                <button class="qty-btn" id="pmQtyPlus">&plus;</button>
-              </div>
-              <button class="btn btn-cta" id="pmAddToCart">В кошик</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- Cart Drawer -->
     <div class="cart-drawer-overlay" id="cartDrawerOverlay">
       <div class="cart-drawer" id="cartDrawer">
@@ -86,18 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 2. ЕЛЕМЕНТИ DOM ---
   const badge = document.getElementById('cartBadge');
   const headerCartBtn = document.getElementById('headerCartBtn');
-  
-  // Modal elements
-  const productModalOverlay = document.getElementById('productModalOverlay');
-  const productModalClose = document.getElementById('productModalClose');
-  const pmImage = document.getElementById('pmImage');
-  const pmTitle = document.getElementById('pmTitle');
-  const pmPrice = document.getElementById('pmPrice');
-  const pmQtyMinus = document.getElementById('pmQtyMinus');
-  const pmQtyPlus = document.getElementById('pmQtyPlus');
-  const pmQtyInput = document.getElementById('pmQtyInput');
-  const pmAddToCart = document.getElementById('pmAddToCart');
-  let currentModalProductId = null;
 
   // Cart Drawer elements
   const cartDrawerOverlay = document.getElementById('cartDrawerOverlay');
@@ -204,43 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     openCartDrawer();
   };
 
-  // --- 4. ФУНКЦІЇ МОДАЛКИ ---
-  window.openProductModal = function(productId) {
-    if (typeof PRODUCTS === 'undefined') return;
-    const product = PRODUCTS.find(p => p.id === productId);
-    if (!product) return;
-
-    currentModalProductId = product.id;
-    pmTitle.textContent = product.name;
-    pmPrice.textContent = product.price.toLocaleString('uk-UA') + ' ₴';
-    pmQtyInput.value = 1;
-
-    // Image
-    const productImage = (product.images && product.images[0]) || product.image || '';
-    if (productImage) {
-      pmImage.innerHTML = `<img src="${productImage}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">`;
-    } else {
-      const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width:64px;height:64px;opacity:0.2;"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
-      pmImage.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--bg-elevated);">${flowerSVG}</div>`;
-    }
-    // Description
-    const pmDescEl = document.getElementById('pmDesc');
-    if (pmDescEl) {
-      pmDescEl.textContent = product.description || 'Ідеальний букет для ваших найрідніших. Свіжі квіти, професійна збірка, стильне пакування.';
-    }
-
-    productModalOverlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  function closeProductModal() {
-    productModalOverlay.classList.remove('open');
-    if (!cartDrawerOverlay.classList.contains('open')) {
-      document.body.style.overflow = '';
-    }
-  }
-
-  // --- 5. ФУНКЦІЇ ШТОРКИ КОШИКА ---
+  // --- 4. ФУНКЦІЇ ШТОРКИ КОШИКА ---
   function openCartDrawer() {
     cartDrawerOverlay.classList.add('open');
     cartDrawer.classList.add('open');
@@ -250,40 +178,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeCartDrawer() {
     cartDrawerOverlay.classList.remove('open');
     cartDrawer.classList.remove('open');
-    if (!productModalOverlay.classList.contains('open')) {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = '';
   }
 
-  // --- 6. EVENT LISTENERS ---
+  // --- 5. EVENT LISTENERS ---
   if (headerCartBtn) headerCartBtn.addEventListener('click', openCartDrawer);
   if (cartDrawerClose) cartDrawerClose.addEventListener('click', closeCartDrawer);
   if (cartDrawerOverlay) cartDrawerOverlay.addEventListener('click', (e) => {
     if (e.target === cartDrawerOverlay) closeCartDrawer();
-  });
-
-  if (productModalClose) productModalClose.addEventListener('click', closeProductModal);
-  if (productModalOverlay) productModalOverlay.addEventListener('click', (e) => {
-    if (e.target === productModalOverlay) closeProductModal();
-  });
-
-  // Modal Qty controls
-  if (pmQtyMinus) pmQtyMinus.addEventListener('click', () => {
-    let v = parseInt(pmQtyInput.value);
-    if (v > 1) pmQtyInput.value = v - 1;
-  });
-  if (pmQtyPlus) pmQtyPlus.addEventListener('click', () => {
-    let v = parseInt(pmQtyInput.value);
-    pmQtyInput.value = v + 1;
-  });
-
-  // Modal Add to cart
-  if (pmAddToCart) pmAddToCart.addEventListener('click', () => {
-    if (currentModalProductId) {
-      const qty = parseInt(pmQtyInput.value) || 1;
-      window.addToCart(currentModalProductId, qty);
-      closeProductModal();
-    }
   });
 
   // Init
