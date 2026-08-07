@@ -373,7 +373,7 @@
       </div>
 
       <div class="bestsellers-cta reveal">
-        <a href="#catalog" class="btn btn-cta" style="padding: 16px 40px; font-size: 15px;">
+        <a href="catalog.html" class="btn btn-cta" style="padding: 16px 40px; font-size: 15px;">
           Дивитись усі букети
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="margin-left:8px;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -673,15 +673,13 @@
         </div>
       `;
 
-      // Клік — прокрутка до каталогу (без 404)
+      // Клік → перехід на каталог з передвибраним фільтром
       card.addEventListener('click', function() {
-        const catalog = document.getElementById('catalog');
-        if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+        window.location.href = 'catalog.html?category=' + category.slug;
       });
       card.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
-          const catalog = document.getElementById('catalog');
-          if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+          window.location.href = 'catalog.html?category=' + category.slug;
         }
       });
 

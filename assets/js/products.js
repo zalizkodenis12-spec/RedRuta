@@ -1,118 +1,147 @@
 /**
- * D&D Flowers — Каталог товарів (заглушки)
- * Замінити image та інші поля на реальні дані при наповненні.
+ * D&D Flowers — Каталог товарів
+ * Замінити images та інші поля на реальні дані при наповненні.
+ *
+ * Поля:
+ *  id, name, price, image (перше фото, для сумісності),
+ *  images[] (масив фото: [0] = основне, [1] = ховер),
+ *  slug, color, type, categorySlug,
+ *  sales (для сортування за популярністю),
+ *  dateAdded (для сортування за новизною),
+ *  badge: 'hit' | 'new' | null  (якщо null — визначається автоматично),
+ *  description (для модалки)
  */
 const PRODUCTS = [
   {
     id: 1,
     name: "Букет 15 Червоних Троянд",
     price: 1250,
-    image: "", // замінити на реальний шлях до фото
+    image: "",
+    images: ["", ""],
     slug: "buket-15-chervonykh-troiand",
     color: "Червоний",
     type: "Троянда",
     categorySlug: "valentines",
-    sales: 120, // для сортування за популярністю
-    dateAdded: "2026-08-01" // для сортування за новизною
+    sales: 120,
+    dateAdded: "2026-08-01",
+    badge: "hit",
+    description: "Класика романтики — 15 свіжих червоних троянд у стильному пакуванні. Ідеальний вибір на День закоханих або для незабутнього визнання."
   },
   {
     id: 2,
     name: "Монобукет з Піоній",
     price: 1450,
     image: "",
+    images: ["", ""],
     slug: "monobucket-z-pioniy",
     color: "Рожевий",
     type: "Півонія",
     categorySlug: "birthday",
     sales: 85,
-    dateAdded: "2026-07-15"
+    dateAdded: "2026-07-15",
+    badge: null,
+    description: "Пишний монобукет із ніжних піоній — щире привітання на день народження. Кожна квітка підібрана вручну, пакування в крафт-папері."
   },
   {
     id: 3,
     name: "Весняний мікс",
     price: 890,
     image: "",
+    images: ["", ""],
     slug: "vesniany-mix",
     color: "Мікс",
     type: "Тюльпан",
     categorySlug: "womens-day",
     sales: 210,
-    dateAdded: "2026-03-01"
+    dateAdded: "2026-03-01",
+    badge: "hit",
+    description: "Яскравий весняний мікс тюльпанів у різних кольорах — символ тепла й оновлення. Підійде для 8 Березня або просто щоб підняти настрій."
   },
   {
     id: 4,
     name: "Букет «Ніжність»",
     price: 1100,
     image: "",
+    images: ["", ""],
     slug: "buket-nizhnist",
     color: "Білий",
     type: "Еустома",
     categorySlug: "for-mom",
     sales: 95,
-    dateAdded: "2026-05-10"
+    dateAdded: "2026-05-10",
+    badge: null,
+    description: "Витончені білі еустоми в поєднанні з зеленню — лаконічна елегантність для улюбленої мами. Кожен букет — це тепле «Люблю тебе»."
   },
   {
     id: 5,
     name: "Преміум Троянди 25 шт",
     price: 2200,
     image: "",
+    images: ["", ""],
     slug: "premium-troyand-25",
     color: "Червоний",
     type: "Троянда",
     categorySlug: "anniversary",
     sales: 300,
-    dateAdded: "2026-01-20"
+    dateAdded: "2026-01-20",
+    badge: "hit",
+    description: "Розкішний букет із 25 преміальних троянд — гідний подарунок для особливої річниці. Великі бутони, насичений колір, бездоганна якість."
   },
   {
     id: 6,
     name: "Букет з Хризантем",
     price: 750,
     image: "",
+    images: ["", ""],
     slug: "buket-z-khryzan",
     color: "Жовтий",
     type: "Хризантема",
     categorySlug: "no-reason",
     sales: 60,
-    dateAdded: "2026-08-03"
+    dateAdded: "2026-08-03",
+    badge: "new",
+    description: "Сонячні жовті хризантеми — відмінний вибір «просто так», без приводу. Піднімають настрій з першого погляду і довго залишаються свіжими."
   },
   {
     id: 7,
     name: "Букет Лілій",
     price: 1350,
     image: "",
+    images: ["", ""],
     slug: "buket-liliy",
     color: "Білий",
     type: "Лілія",
     categorySlug: "jubilee",
     sales: 45,
-    dateAdded: "2026-06-22"
+    dateAdded: "2026-06-22",
+    badge: null,
+    description: "Урочистий білий букет з аромату лілій — для значних ювілейних дат. Вишуканий, стриманий, незабутній."
   },
   {
     id: 8,
     name: "Мікс Еустом та Піоній",
     price: 1800,
     image: "",
+    images: ["", ""],
     slug: "mix-eustom-pioniy",
     color: "Рожевий",
     type: "Півонія",
     categorySlug: "graduation",
     sales: 110,
-    dateAdded: "2026-05-25"
+    dateAdded: "2026-05-25",
+    badge: null,
+    description: "Святковий мікс ніжних еустом і розкішних піоній — ідеальний букет для дипломанта чи випускника. Сучасне пакування, ефектний вигляд."
   }
 ];
 
 /**
  * Глобальна функція для створення DOM-елементу картки товару
- * Використовується на головній (Бестселери) та в Каталозі.
+ * Використовується на головній (Бестселери).
+ * На каталозі — використовується buildCatalogCard() з catalog-new.js
  */
 function createProductCard(product) {
-  // Heart SVG outline
   const heartSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-
-  // Cart SVG
-  const cartSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
-
-  // Placeholder flower SVG
+  const cartSVG  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
   const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
 
   const card = document.createElement('div');
@@ -142,7 +171,7 @@ function createProductCard(product) {
   `;
 
   // Click on card → open product modal
-  card.addEventListener('click', function(e) {
+  card.addEventListener('click', function (e) {
     if (e.target.closest('.product-wishlist') || e.target.closest('.btn-cart')) return;
     if (typeof window.openProductModal === 'function') {
       window.openProductModal(product.id);
@@ -151,7 +180,7 @@ function createProductCard(product) {
 
   // Wishlist toggle
   const wishBtn = card.querySelector('.product-wishlist');
-  wishBtn.addEventListener('click', function(e) {
+  wishBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     this.classList.toggle('active');
     const isActive = this.classList.contains('active');
@@ -160,7 +189,7 @@ function createProductCard(product) {
 
   // Add to cart
   const cartBtn = card.querySelector('.btn-cart');
-  cartBtn.addEventListener('click', function(e) {
+  cartBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     if (typeof window.addToCart === 'function') {
       window.addToCart(product.id, 1);

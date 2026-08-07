@@ -3,147 +3,209 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Каталог — D&D Flowers</title>
-  
+  <title>Каталог букетів — D&D Flowers | Вінниця</title>
+  <meta name="description" content="Каталог свіжих букетів D&D Flowers у Вінниці. Оберіть ідеальний букет за приводом: день народження, весілля, романтика, Без приводу та інші. Доставка за 60 хвилин.">
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/catalog.css">
 </head>
 <body>
 
-${headerHTML}
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
 
-${mobileNavHTML}
+    <nav class="nav-left" aria-label="Навігація ліворуч">
+      <a href="catalog.html">Каталог</a>
+      <a href="index.html#about">Про нас</a>
+      <a href="index.html#delivery">Доставка</a>
+    </nav>
 
+    <div class="header-logo-center">
+      <a href="index.html" aria-label="D&amp;D Flowers — на головну">
+        <div class="logo-avatar-circle">
+          <img src="assets/images/Аватарка для квіткового.png" alt="D&amp;D Flowers логотип" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#f4a7b8,#e8778a)'">
+        </div>
+      </a>
+    </div>
+
+    <nav class="nav-right" aria-label="Навігація праворуч">
+      <a href="index.html#reviews">Відгуки</a>
+      <a href="index.html#contacts">Контакти</a>
+    </nav>
+
+    <button class="burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="catalog.html">Каталог</a>
+  <a href="index.html#about">Про нас</a>
+  <a href="index.html#delivery">Доставка</a>
+  <a href="index.html#reviews">Відгуки</a>
+  <a href="index.html#contacts">Контакти</a>
+  <a href="tel:+380974382519" class="btn btn-outline">Зателефонувати</a>
+  <a href="catalog.html" class="btn btn-cta">Обрати букет</a>
+</div>
+
+<!-- ===== MAIN ===== -->
 <main id="top" class="catalog-page">
   <div class="container">
+
     <!-- Breadcrumbs -->
     <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="/">Головна</a>
+      <a href="index.html">Головна</a>
       <span aria-hidden="true">&rsaquo;</span>
-      <a href="/catalog">Каталог</a>
-      <span aria-hidden="true">&rsaquo;</span>
-      <span aria-current="page" id="breadcrumbCategory">...</span>
+      <span id="breadcrumbCurrent" aria-current="page">Каталог</span>
     </nav>
 
     <!-- Page Header -->
-    <div class="catalog-header">
-      <h1 class="catalog-title" id="catalogTitle">Каталог</h1>
-      <span class="catalog-count" id="catalogCount">0 товарів</span>
+    <div class="catalog-page-header">
+      <div class="catalog-header-text">
+        <h1 class="catalog-page-title">Каталог букетів</h1>
+        <p class="catalog-page-subtitle">Свіжі квіти для кожного приводу — зібрані з любов'ю та доставлені за 60 хвилин</p>
+      </div>
+      <span class="catalog-count-badge" id="catalogCount">0 букетів</span>
     </div>
 
-    <!-- Layout 2 cols -->
-    <div class="catalog-layout">
-      <!-- Sidebar Filters -->
-      <aside class="catalog-sidebar">
-        <button class="catalog-filter-close" id="filterCloseBtn" aria-label="Закрити фільтри">&times;</button>
-        <div class="filter-header-mobile">Фільтри</div>
-        
-        <div class="filter-group">
-          <button class="filter-group-title active" aria-expanded="true">Ціна</button>
-          <div class="filter-group-content" style="max-height: 200px;">
-            <div class="price-inputs">
-              <input type="number" id="priceMin" placeholder="Від" min="0">
-              <span>-</span>
-              <input type="number" id="priceMax" placeholder="До" min="0">
-            </div>
-            <!-- Спрощений range slider (заглушка) -->
-            <input type="range" class="price-range" id="priceRange" min="0" max="5000" step="50">
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <button class="filter-group-title active" aria-expanded="true">Колір</button>
-          <div class="filter-group-content" style="max-height: 300px;">
-            <label class="filter-checkbox"><input type="checkbox" name="color" value="Білий"> <span class="color-dot" style="background:#fff;border:1px solid #ddd;"></span> Білий</label>
-            <label class="filter-checkbox"><input type="checkbox" name="color" value="Рожевий"> <span class="color-dot" style="background:#ffb6c1;"></span> Рожевий</label>
-            <label class="filter-checkbox"><input type="checkbox" name="color" value="Червоний"> <span class="color-dot" style="background:#ff0000;"></span> Червоний</label>
-            <label class="filter-checkbox"><input type="checkbox" name="color" value="Жовтий"> <span class="color-dot" style="background:#ffd700;"></span> Жовтий</label>
-            <label class="filter-checkbox"><input type="checkbox" name="color" value="Мікс"> <span class="color-dot" style="background:linear-gradient(45deg, red, yellow, pink);"></span> Мікс</label>
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <button class="filter-group-title active" aria-expanded="true">Тип квітки</button>
-          <div class="filter-group-content" style="max-height: 300px;">
-            <label class="filter-checkbox"><input type="checkbox" name="type" value="Троянда"> Троянда</label>
-            <label class="filter-checkbox"><input type="checkbox" name="type" value="Півонія"> Півонія</label>
-            <label class="filter-checkbox"><input type="checkbox" name="type" value="Хризантема"> Хризантема</label>
-            <label class="filter-checkbox"><input type="checkbox" name="type" value="Еустома"> Еустома</label>
-            <label class="filter-checkbox"><input type="checkbox" name="type" value="Тюльпан"> Тюльпан</label>
-            <label class="filter-checkbox"><input type="checkbox" name="type" value="Лілія"> Лілія</label>
-          </div>
-        </div>
-        
-        <div class="filter-group" id="categoryFiltersGroup">
-          <button class="filter-group-title active" aria-expanded="true">Подія</button>
-          <div class="filter-group-content" style="max-height: 300px;" id="categoryCheckboxes">
-            <!-- Згенерується через JS -->
-          </div>
-        </div>
-
-        <button class="btn btn-outline" id="resetFiltersBtn" style="width: 100%; margin-top: 16px;">Скинути фільтри</button>
-      </aside>
-
-      <!-- Main Content -->
-      <div class="catalog-main">
-        <!-- Topbar -->
-        <div class="catalog-topbar">
-          <button class="btn btn-outline filter-toggle-btn" id="filterOpenBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-            Фільтри
-          </button>
-
-          <div class="sort-wrap">
-            <label for="sortSelect">Сортувати:</label>
-            <select id="sortSelect">
-              <option value="popular">За популярністю</option>
-              <option value="price_asc">Дешевші спочатку</option>
-              <option value="price_desc">Дорожчі спочатку</option>
-              <option value="new">Новинки</option>
-            </select>
-          </div>
-          
-          <div class="view-toggles">
-            <button class="view-btn active" data-view="grid" aria-label="Grid view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            </button>
-            <button class="view-btn" data-view="list" aria-label="List view">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Products Grid -->
-        <div class="products-grid catalog-grid" id="catalogGrid">
-          <!-- Карточки товарів -->
-        </div>
-
-        <!-- Empty State -->
-        <div class="catalog-empty" id="catalogEmpty" style="display:none;">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <h3>Товарів не знайдено</h3>
-          <p>Спробуйте змінити критерії фільтрації або скинути всі фільтри.</p>
-          <button class="btn btn-cta" id="resetFiltersEmptyBtn">Скинути фільтри</button>
+    <!-- Filter Bar -->
+    <div class="catalog-filterbar">
+      <!-- Chips row -->
+      <div class="catalog-chips-wrap">
+        <div class="catalog-chips" id="catalogChips" role="group" aria-label="Фільтр за приводом">
+          <!-- Generated by JS -->
         </div>
       </div>
+
+      <!-- Sort + Search + Mobile Filter Btn -->
+      <div class="catalog-controls">
+        <div class="catalog-search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="catalogSearch" class="catalog-search" placeholder="Пошук букету...">
+        </div>
+        <div class="catalog-sort-wrap">
+          <select id="catalogSort" class="catalog-sort" aria-label="Сортувати">
+            <option value="popular">За популярністю</option>
+            <option value="price_asc">Дешевші спочатку</option>
+            <option value="price_desc">Дорожчі спочатку</option>
+            <option value="new">Новинки</option>
+          </select>
+        </div>
+        <button class="catalog-filter-mobile-btn btn btn-outline" id="filterMobileBtn" aria-label="Фільтри">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          Фільтри
+        </button>
+      </div>
     </div>
+
+    <!-- Products Grid -->
+    <div class="catalog-grid" id="catalogGrid">
+      <!-- Skeleton placeholders (shown before render) -->
+    </div>
+
+    <!-- Empty State -->
+    <div class="catalog-empty" id="catalogEmpty" style="display:none;">
+      <div class="catalog-empty-icon">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" width="64" height="64">
+          <circle cx="28" cy="28" r="18"/>
+          <line x1="42" y1="42" x2="58" y2="58"/>
+          <path d="M22 28c0-3.3 2.7-6 6-6" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>За цим фільтром поки нічого немає</h3>
+      <p>Спробуйте обрати інший привід або скинути фільтри</p>
+      <button class="btn btn-cta" id="resetFiltersBtn">Скинути фільтри</button>
+    </div>
+
+    <!-- Load More -->
+    <div class="catalog-loadmore-wrap" id="loadMoreWrap" style="display:none;">
+      <button class="btn btn-outline catalog-loadmore" id="loadMoreBtn">
+        Показати ще
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </button>
+    </div>
+
   </div>
 </main>
 
-${footerHTML}
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="index.html" class="logo" style="display:flex;align-items:center;gap:10px;">
+      <div style="width:40px;height:40px;border-radius:50%;overflow:hidden;border:2px solid var(--accent);flex-shrink:0;">
+        <img src="assets/images/Аватарка для квіткового.png" alt="D&D Flowers" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+      </div>
+    </a>
+    <nav class="footer-nav">
+      <a href="catalog.html">Каталог</a>
+      <a href="index.html#delivery">Доставка</a>
+      <a href="index.html#about">Про нас</a>
+      <a href="index.html#reviews">Відгуки</a>
+      <a href="index.html#contacts">Контакти</a>
+    </nav>
+    <div class="footer-socials">
+      <a href="https://instagram.com/d.n.d_flowers" target="_blank" rel="noopener" aria-label="Instagram D&D Flowers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="tel:+380974382519" aria-label="Телефон">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>&copy; 2026 D&amp;D Flowers. Всі права захищено.</span>
+    <span>м. Вінниця, вул. Трамвайна, 3</span>
+  </div>
+</footer>
 
-${mobileCTAHTML}
+<a href="tel:+380974382519" class="mobile-cta">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Зателефонувати
+</a>
 
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
+<!-- Mobile Filter Bottom Sheet -->
+<div class="filter-sheet-overlay" id="filterSheetOverlay"></div>
+<div class="filter-sheet" id="filterSheet" role="dialog" aria-modal="true" aria-label="Фільтри">
+  <div class="filter-sheet-handle"></div>
+  <div class="filter-sheet-header">
+    <span class="filter-sheet-title">Фільтри</span>
+    <button class="filter-sheet-close" id="filterSheetClose" aria-label="Закрити">&times;</button>
+  </div>
+  <div class="filter-sheet-body">
+    <div class="filter-sheet-section">
+      <div class="filter-sheet-label">Привід</div>
+      <div class="filter-sheet-chips" id="filterSheetChips">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+    <div class="filter-sheet-section">
+      <div class="filter-sheet-label">Сортування</div>
+      <div class="filter-sheet-sort-list" id="filterSheetSort">
+        <button class="filter-sort-option active" data-sort="popular">За популярністю</button>
+        <button class="filter-sort-option" data-sort="price_asc">Дешевші спочатку</button>
+        <button class="filter-sort-option" data-sort="price_desc">Дорожчі спочатку</button>
+        <button class="filter-sort-option" data-sort="new">Новинки</button>
+      </div>
+    </div>
+  </div>
+  <div class="filter-sheet-footer">
+    <button class="btn btn-outline" id="filterSheetReset">Скинути</button>
+    <button class="btn btn-cta" id="filterSheetApply">Застосувати</button>
+  </div>
+</div>
 
 <script src="assets/js/categories.js"></script>
 <script src="assets/js/cart.js"></script>
 <script src="assets/js/products.js"></script>
-<script src="assets/js/catalog.js"></script>
+<script src="assets/js/catalog-new.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

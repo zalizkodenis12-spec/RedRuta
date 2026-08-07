@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="pm-info">
             <h2 class="pm-title" id="pmTitle">Назва товару</h2>
             <div class="pm-price" id="pmPrice">0 ₴</div>
-            <p class="pm-desc">Ідеальний букет для ваших найрідніших. Свіжі квіти, професійна збірка, стильне пакування.</p>
+            <p class="pm-desc" id="pmDesc">Ідеальний букет для ваших найрідніших. Свіжі квіти, професійна збірка, стильне пакування.</p>
             
             <div class="pm-controls">
               <div class="qty-control">
@@ -215,11 +215,18 @@ document.addEventListener('DOMContentLoaded', () => {
     pmPrice.textContent = product.price.toLocaleString('uk-UA') + ' ₴';
     pmQtyInput.value = 1;
 
-    if (product.image) {
-      pmImage.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+    // Image
+    const productImage = (product.images && product.images[0]) || product.image || '';
+    if (productImage) {
+      pmImage.innerHTML = `<img src="${productImage}" alt="${product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius-lg);">`;
     } else {
       const flowerSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" style="width:64px;height:64px;opacity:0.2;"><path d="M12 2a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M12 14a4 4 0 0 1 0 8 4 4 0 0 1 0-8z"/><path d="M2 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><path d="M14 12a4 4 0 0 1 8 0 4 4 0 0 1-8 0z"/><circle cx="12" cy="12" r="2.5" fill="var(--accent)" stroke="none"/></svg>`;
-      pmImage.innerHTML = flowerSVG;
+      pmImage.innerHTML = `<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:var(--bg-elevated);">${flowerSVG}</div>`;
+    }
+    // Description
+    const pmDescEl = document.getElementById('pmDesc');
+    if (pmDescEl) {
+      pmDescEl.textContent = product.description || 'Ідеальний букет для ваших найрідніших. Свіжі квіти, професійна збірка, стильне пакування.';
     }
 
     productModalOverlay.classList.add('open');
