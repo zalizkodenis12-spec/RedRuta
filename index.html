@@ -33,10 +33,10 @@
   stroke-width: 1.5 !important;
 }
 
-/* ===== HERO: все ліворуч, підзаголовок курсивний не жирний ===== */
+/* ===== HERO: все по центру, підзаголовок курсивний не жирний ===== */
 .hero-inner {
   display: flex !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 auto !important;
@@ -312,22 +312,22 @@
     </div>
     <div class="hero-scrim"></div>
     <div class="container hero-inner">
-      <div class="reveal" style="max-width: 600px; margin-left: 8%; padding-top: 40px; text-align: left;">
-        <!-- Заголовок hero: Playfair Display, курсив, ліво -->
-        <h1 class="hero-title" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;">Смак, який<br>закохує з<br>першого шматочка</h1>
+      <div class="reveal" style="max-width: 800px; padding-top: 40px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+        <!-- Заголовок hero: Playfair Display, курсив, центр -->
+        <h1 class="hero-title" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:clamp(2.5rem, 4.5vw, 3.8rem);line-height:1.15;">Смак, який<br>закохує з<br>першого шматочка</h1>
         <!-- Підзаголовок: курсив, нахилений вправо, нежирний, звичайний шрифт -->
         <p class="hero-sub" style="font-style:italic;font-weight:400;font-family:'Playfair Display',serif;transform:none;">
           Спробуйте авторські страви від шефа &mdash;<br>
           замовляйте онлайн або приходьте в гості вже сьогодні.
         </p>
-        <div class="hero-actions">
-          <a href="#catalog" class="btn btn-cta btn-lg">ПОДИВИТИСЬ МЕНЮ</a>
+        <div class="hero-actions" style="justify-content: center;">
+          <a href="#catalog" class="btn btn-cta btn-lg" style="background: #e60000; border-color: #e60000; color: #fff;">ПОДИВИТИСЬ МЕНЮ</a>
           <a href="tel:+380974382519" class="btn btn-outline btn-lg">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             ЗАТЕЛЕФОНУВАТИ
           </a>
         </div>
-        <div class="hero-meta">
+        <div class="hero-meta" style="justify-content: center;">
           <span>вул. Василя Порика, 28, Вінниця</span>
           <span>&middot;</span>
           <span>Пн&ndash;Нд: 10:00 &ndash; 22:00</span>
