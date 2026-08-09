@@ -1260,7 +1260,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
 }
 
 /* ===== Reviews ===== */
-.reviews-section { padding: 96px 0; background: #fff0f0 !important; }
+.reviews-section { padding: 96px 0; background: #ffe4e4 !important; }
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
