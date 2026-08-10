@@ -527,7 +527,7 @@ h1, h2, h3, .logo-text, .main-nav a, .mobile-nav a, .footer-nav a, .btn {
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  background: linear-gradient(135deg, #fce8ed 0%, #f9d0d8 50%, #f4a7b8 100%);
+  background: #C62828;
   flex-shrink: 0;
 }
 .product-media img {

@@ -173,8 +173,8 @@
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
   background: transparent !important;
-  color: var(--accent) !important;
-  border: 1.5px solid rgba(232,119,138,0.5) !important;
+  color: #C62828 !important;
+  border: 1.5px solid rgba(198,40,40,0.5) !important;
   cursor: pointer !important;
   transition: background var(--transition), color var(--transition),
               border-color var(--transition), transform 0.15s ease,
@@ -183,9 +183,9 @@
 }
 .pcard-cart-btn:hover,
 .btn-cart:hover {
-  background: var(--accent) !important;
+  background: #C62828 !important;
   color: #fff !important;
-  border-color: var(--accent) !important;
+  border-color: #C62828 !important;
   transform: translateY(-1px) scale(1.02) !important;
   box-shadow: 0 5px 16px rgba(212,85,107,0.28) !important;
 }
