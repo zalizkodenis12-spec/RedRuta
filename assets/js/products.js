@@ -211,9 +211,10 @@ function createProductCard(product) {
   // Квіткова ілюстрація-плейсхолдер
   const flowerPlaceholder = `
     <div class="pcard-placeholder">
-      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" width="64" height="64" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-        <path d="M12 6c-3.31 0-6 2.69-6 6h12c0-3.31-2.69-6-6-6z"/>
+      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" width="64" height="64" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 2v12c0 2-2 3-3 3H7c-1 0-3-1-3-3V2"></path>
+        <path d="M7 2v20"></path>
+        <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1 1 2 2 2h3zm0 0v7"></path>
       </svg>
     </div>`;
 

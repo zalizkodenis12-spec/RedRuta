@@ -5,7 +5,7 @@
  * - Акордеон (Склад, Догляд)
  * - Піли розміру + лічильник кількості
  * - Кнопка кошика
- * - Схожі букети (горизонтальний скрол)
+ * - Схожі страви (горизонтальний скрол)
  * - Flying-to-cart анімація
  *
  * Визначає: window.openProductModal, window.flyToCart
@@ -19,7 +19,11 @@
   const SVG_CART  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
   const SVG_TRUCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`;
   const SVG_CLOCK = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round"/></svg>`;
-  const SVG_FLOWER_PH = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.5" width="64" height="64" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M12 6c-3.31 0-6 2.69-6 6h12c0-3.31-2.69-6-6-6z"/></svg>`;
+  const SVG_FLOWER_PH = `<svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" width="64" height="64" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 2v12c0 2-2 3-3 3H7c-1 0-3-1-3-3V2"></path>
+        <path d="M7 2v20"></path>
+        <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1 1 2 2 2h3zm0 0v7"></path>
+      </svg>`;
 
   // ─── Стан ────────────────────────────────────────────────────
   let currentProduct = null;
@@ -90,9 +94,9 @@
       </div>
     </div><!-- /.pm-body -->
 
-    <!-- Схожі букети -->
+    <!-- Схожі страви -->
     <div class="pm-similar" id="pmSimilar" style="display:none">
-      <h3 class="pm-similar-title">Схожі букети</h3>
+      <h3 class="pm-similar-title">Схожі страви</h3>
       <div class="pm-similar-scroll" id="pmSimilarScroll"></div>
     </div>
 
@@ -263,7 +267,7 @@
     }
   }
 
-  // ─── Схожі букети ────────────────────────────────────────────
+  // ─── Схожі страви ────────────────────────────────────────────
   function buildSimilar(product) {
     similarScroll.innerHTML = '';
     if (typeof PRODUCTS === 'undefined') { similarSec.style.display = 'none'; return; }
@@ -345,7 +349,7 @@
     // Qty
     qtyVal.textContent = '1';
 
-    // Схожі букети
+    // Схожі страви
     buildSimilar(product);
   }
 

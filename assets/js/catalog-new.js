@@ -207,28 +207,31 @@
       });
     }
 
-    renderList('filterColorList', colors, activeColors, true);
-    renderList('filterFlowerList', flowers, activeFlowers, false);
     
-    // Occasions (just use CATEGORIES)
+    const foodCategories = ["Перші страви", "Другі страви", "Салати", "Десерти", "Напої"];
+    renderList('filterFlowerList', foodCategories, activeFlowers, false);
+    
+    const dietFeatures = ["Вегетаріанське", "Без глютену", "Гостре", "Дитяче меню"];
     const occContainer = document.getElementById('filterOccasionList');
-    if (occContainer && typeof CATEGORIES !== 'undefined') {
-      CATEGORIES.forEach(cat => {
+    if (occContainer) {
+      dietFeatures.forEach(cat => {
         const label = document.createElement('label');
         label.className = 'filter-checkbox-item';
         const input = document.createElement('input');
         input.type = 'checkbox';
-        input.value = cat.slug;
+        input.value = cat;
+        if (activeOccasions.has(cat)) input.checked = true;
         input.addEventListener('change', () => {
-          if (input.checked) activeOccasions.add(cat.slug);
-          else activeOccasions.delete(cat.slug);
+          if (input.checked) activeOccasions.add(cat);
+          else activeOccasions.delete(cat);
           applyFilters();
         });
         label.appendChild(input);
-        label.appendChild(document.createTextNode(cat.name));
+        label.appendChild(document.createTextNode(cat));
         occContainer.appendChild(label);
       });
     }
+
   }
 
   // ─── Фільтрація ──────────────────────────────────────────
@@ -256,9 +259,7 @@
     });
 
     // 5. Checkboxes (OR within group, AND between groups)
-    if (activeColors.size > 0) {
-      result = result.filter(p => activeColors.has(p.color));
-    }
+    
     if (activeFlowers.size > 0) {
       result = result.filter(p => activeFlowers.has(p.type));
     }
