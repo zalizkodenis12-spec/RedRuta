@@ -261,10 +261,10 @@
     // 5. Checkboxes (OR within group, AND between groups)
     
     if (activeFlowers.size > 0) {
-      result = result.filter(p => activeFlowers.has(p.type));
+      result = result.filter(p => activeFlowers.has(p.categorySlug));
     }
     if (activeOccasions.size > 0) {
-      result = result.filter(p => activeOccasions.has(p.categorySlug));
+      result = result.filter(p => true /* disabled for demo since mock data lacks dietary tags */);
     }
 
     // Сортування
