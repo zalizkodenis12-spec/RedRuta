@@ -335,8 +335,8 @@
 
     // Акордеон
     buildAccordion([
-      { title: 'Склад букета',     content: product.composition || '' },
-      { title: 'Догляд за квітами', content: product.careInfo    || '' },
+      { title: 'Склад страви',     content: product.composition || '' },
+      { title: 'Харчова цінність', content: product.careInfo    || '' },
     ]);
 
     // Розміри
