@@ -17,7 +17,7 @@
   let filteredCache  = [];
 
   // Filter State
-  let priceMinVal = 0, priceMaxVal = 5000;
+  let priceMinVal = 0, priceMaxVal = 2000;
   let countMinVal = 1, countMaxVal = 3000;
   let activeColors = new Set();
   let activeFlowers = new Set();
@@ -266,7 +266,11 @@
       result = result.filter(p => activeFlowers.has(p.categorySlug));
     }
     if (activeOccasions.size > 0) {
-      result = result.filter(p => true /* disabled for demo since mock data lacks dietary tags */);
+      result = result.filter(p => {
+        if (!p.dietFeatures) return false;
+        // Check if product has ANY of the active dietary features
+        return Array.from(activeOccasions).some(feat => p.dietFeatures.includes(feat));
+      });
     }
 
     // Сортування
