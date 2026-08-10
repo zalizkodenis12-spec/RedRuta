@@ -313,27 +313,72 @@
     <div class="hero-scrim"></div>
     <div class="container hero-inner">
       <div class="reveal" style="max-width: 800px; padding-top: 40px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+        
         <!-- Заголовок hero: Playfair Display, курсив, центр -->
-        <h1 class="hero-title" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;text-align:center !important;width:100%;white-space:nowrap;">Смак, який<br>закохує з<br>першого слайсу</h1>
-        <!-- Підзаголовок: курсив, нахилений вправо, нежирний, звичайний шрифт -->
-        <p class="hero-sub" style="font-style:italic;font-weight:400;font-family:'Playfair Display',serif;transform:none;text-align:center !important;width:100%;">
+        <h1 class="hero-title hero-title-mobile" style="font-family:'Playfair Display',serif;font-weight:700;font-style:italic;text-align:center !important;width:100%;white-space:nowrap;">Смак, який<br>закохує з<br>першого слайсу</h1>
+        
+        <p class="hero-sub hero-sub-mobile" style="font-style:italic;font-weight:400;font-family:'Playfair Display',serif;transform:none;text-align:center !important;width:100%;">
           Спробуйте авторські страви від шефа &mdash;<br>
           замовляйте онлайн або приходьте в гості вже сьогодні.
         </p>
-        <div class="hero-actions" style="justify-content: center;">
-          <a href="#catalog" class="btn btn-cta btn-lg" style="background: #B71C1C; border-color: #B71C1C; color: #fff;">ПОДИВИТИСЬ МЕНЮ</a>
+        
+        <div class="hero-actions hero-actions-mobile" style="justify-content: center;">
+          <a href="#catalog" class="btn btn-cta btn-lg" style="background: #B71C1C; border-color: #B71C1C; color: #fff;">МЕНЮ</a>
           <a href="tel:+380934072262" class="btn btn-outline btn-lg">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             ЗАТЕЛЕФОНУВАТИ
           </a>
         </div>
-        <div class="hero-meta" style="justify-content: center;">
-          <span>вул. Василя Порика, 28, Вінниця</span>
-          <span>&middot;</span>
-          <span>Пн&ndash;Нд: 10:00 &ndash; 22:00</span>
-          <span>&middot;</span>
-          <span>4.1 ★ Google</span>
+
+        <div class="hero-meta hero-meta-layout" style="justify-content: center;">
+          <div class="meta-row meta-row-1">
+            <span>4.1 ★ Google</span>
+            <span class="meta-dot">&middot;</span>
+            <span>Пн&ndash;Нд: 10:00 &ndash; 22:00</span>
+          </div>
+          <span class="meta-dot desktop-only">&middot;</span>
+          <div class="meta-row meta-row-2">
+            <span>вул. Василя Порика, 28, Вінниця</span>
+          </div>
         </div>
+        
+        <style>
+          .hero-meta-layout { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; }
+          .meta-row { display: flex; gap: 8px; align-items: center; }
+          .desktop-only { display: inline-block; }
+          
+          @media (max-width: 768px) {
+            .hero-meta-layout { flex-direction: column; gap: 6px; }
+            .desktop-only { display: none !important; }
+            .hero-inner {
+              transform: translateY(-8vh) !important;
+            }
+            .hero-title-mobile {
+              font-size: clamp(3rem, 13vw, 4.5rem) !important;
+              line-height: 1.1 !important;
+              margin-bottom: 8px !important;
+            }
+            .hero-sub-mobile {
+              font-size: 14px !important;
+              margin-bottom: 16px !important;
+            }
+            .hero-actions-mobile {
+              flex-direction: row !important;
+              flex-wrap: nowrap !important;
+              gap: 8px !important;
+              margin-bottom: 16px !important;
+            }
+            .hero-actions-mobile .btn {
+              flex: 1;
+              padding: 12px 8px !important;
+              font-size: 13px !important;
+              white-space: nowrap;
+            }
+            .hero-meta-mobile {
+              font-size: 12px !important;
+            }
+          }
+        </style>
       </div>
     </div>
   </section>
