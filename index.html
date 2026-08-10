@@ -339,7 +339,45 @@
   </section>
 
   <!-- TRUST BAR -->
-  <section class="trust-bar">
+  <section class="trust-bar" style="overflow: hidden;">
+    <style>
+      .trust-item-clone { display: none; }
+      @media (max-width: 768px) {
+        .trust-grid {
+          display: flex !important;
+          flex-wrap: nowrap !important;
+          width: 300% !important; /* 6 items total (4 original + 2 clones), 2 visible at a time */
+          gap: 0 !important;
+          padding: 0 !important;
+          animation: trustCarousel 6s infinite;
+        }
+        .trust-item, .trust-item-clone {
+          flex: 0 0 16.66666% !important; /* 100% / 6 items */
+          width: 16.66666% !important;
+          padding: 0 10px;
+          box-sizing: border-box;
+          flex-direction: row !important; /* Keep icon and text horizontal on mobile */
+          text-align: left !important;
+          align-items: flex-start !important;
+        }
+        .trust-item svg, .trust-item-clone svg {
+          margin-right: 12px;
+          flex-shrink: 0;
+        }
+        .trust-item strong, .trust-item-clone strong {
+          font-size: 14px !important;
+        }
+        .trust-item span, .trust-item-clone span {
+          font-size: 12px !important;
+        }
+        .trust-item-clone { display: flex !important; }
+      }
+      @keyframes trustCarousel {
+        0%, 45% { transform: translateX(0); } /* pair 1 */
+        50%, 95% { transform: translateX(-33.33333%); } /* pair 2 */
+        100% { transform: translateX(-66.66666%); } /* pair 1 clones (seamless loop) */
+      }
+    </style>
     <div class="container trust-grid">
       <div class="trust-item reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -356,6 +394,16 @@
       <div class="trust-item reveal">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
         <div><strong>Оплата на місці</strong><span>Готівкою, карткою або онлайн</span></div>
+      </div>
+      
+      <!-- Clones for seamless mobile carousel -->
+      <div class="trust-item-clone" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <div><strong>Гарячі страви</strong><span>Доставимо гарячі страви за 60 хвилин</span></div>
+      </div>
+      <div class="trust-item-clone" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8 2 4 5 4 10c0 4 3 7 8 12 5-5 8-8 8-12 0-5-4-8-8-8z"/></svg>
+        <div><strong>Свіжі продукти</strong><span>Готуємо тільки з найкращих інгредієнтів</span></div>
       </div>
     </div>
   </section>
