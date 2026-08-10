@@ -74,7 +74,7 @@
 
     const minLimit = parseInt(rangeMin.min);
     const maxLimit = parseInt(rangeMax.max);
-    const gap = 1;
+    const gap = 0;
 
     function updateTrack() {
       const minV = parseInt(rangeMin.value);
@@ -167,8 +167,9 @@
       if (!container) return;
       container.innerHTML = '';
       
-      Object.keys(dataMap).sort().forEach(key => {
-        const count = dataMap[key];
+      const keys = Array.isArray(dataMap) ? dataMap : Object.keys(dataMap).sort();
+      keys.forEach(key => {
+        const count = Array.isArray(dataMap) ? '' : dataMap[key];
         const label = document.createElement('label');
         label.className = isColor ? 'filter-color-item' : 'filter-checkbox-item';
         
@@ -201,7 +202,8 @@
           });
         } else {
           label.appendChild(input);
-          label.appendChild(document.createTextNode(`${key} (${count})`));
+          const textNodeStr = count !== '' ? `${key} (${count})` : key;
+          label.appendChild(document.createTextNode(textNodeStr));
         }
         container.appendChild(label);
       });
