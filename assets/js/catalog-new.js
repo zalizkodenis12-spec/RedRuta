@@ -18,7 +18,7 @@
 
   // Filter State
   let priceMinVal = 0, priceMaxVal = 5000;
-  let countMinVal = 1, countMaxVal = 101;
+  let countMinVal = 1, countMaxVal = 3000;
   let activeColors = new Set();
   let activeFlowers = new Set();
   let activeOccasions = new Set();
@@ -252,9 +252,9 @@
     // 3. Price
     result = result.filter(p => p.price >= priceMinVal && p.price <= priceMaxVal);
 
-    // 4. Flower Count
+    // 4. Calories Count
     result = result.filter(p => {
-      const count = p.flowerCount || 15; // default if missing
+      const count = p.calories || 200; // default if missing
       return count >= countMinVal && count <= countMaxVal;
     });
 
@@ -271,6 +271,8 @@
     result.sort((a, b) => {
       if (activeSortVal === 'price_asc')  return a.price - b.price;
       if (activeSortVal === 'price_desc') return b.price - a.price;
+      if (activeSortVal === 'cal_asc')    return (a.calories || 0) - (b.calories || 0);
+      if (activeSortVal === 'cal_desc')   return (b.calories || 0) - (a.calories || 0);
       if (activeSortVal === 'new')        return new Date(b.dateAdded) - new Date(a.dateAdded);
       return (b.sales || 0) - (a.sales || 0); // popular
     });

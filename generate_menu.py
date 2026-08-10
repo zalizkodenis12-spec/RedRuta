@@ -82,6 +82,33 @@ menu_raw = """
 Млинець з сьомгою та сиром (300 г) | 170
 Млинець з червоною ікрою (300 г) | 280
 Млинці солодкі в асортименті (300 г) | 145
+
+Холодні закуски:
+Лаваш (лаваш, сир, помідори, зелень) (1 шт.) | 120
+Овочева палітра (томати свіжі, огірки, перець болгарський, зелень) (350 г) | 125
+Тарілка з солінням (огірки та помідори квашені) (500 г) | 150
+Оселедець пряного посолу (1 порція) | 90
+Нарізка сьомги (100 г) | 200
+Почеревина (100 г) | 120
+Лимон (1 шт.) | 50
+Хліб (1 шт.) | 2
+Грінки (1 шт.) | 4
+
+Соуси:
+Сметана (50 г) | 20
+Кетчуп (50 г) | 20
+Соєвий соус (50 г) | 20
+
+Гарячі напої:
+Чай в асортименті (250 мл) | 40
+Кава "Еспресо" (50 мл) | 40
+Кава "Еспресо з молоком" (70 мл) | 45
+Кава "Американо" (125 мл) | 40
+Кава "Американо з молоком" (160 мл) | 45
+Капучіно (180 мл) | 50
+Лате (220 мл) | 60
+Гарячий шоколад (220 мл) | 60
+Какао (220 мл) | 50
 """
 
 import json
@@ -124,7 +151,7 @@ for line in menu_raw.split('\n'):
         comp = ""
         weight = ""
         
-        m_weight = re.search(r'\(([\d,\.]+\s*[гкгпор\.]+)\)$', name_part)
+        m_weight = re.search(r'\(([\d,\.]+\s*[гкгпормлшт\.]+)\)$', name_part)
         if m_weight:
             weight = m_weight.group(1)
             name_part = name_part[:m_weight.start()].strip()
@@ -145,15 +172,17 @@ for line in menu_raw.split('\n'):
             cat = "Салати"
         elif current_section == "Млинці" and "солодкі" in name.lower():
             cat = "Десерти"
+        elif current_section == "Гарячі напої":
+            cat = "Напої"
         else:
             cat = "Другі страви"
             
-        kcal = random.randint(200, 800)
-        prot = random.randint(5, 40)
-        fat = random.randint(10, 50)
-        carb = random.randint(5, 60)
+        kcal = random.randint(50, 900)
+        prot = random.randint(2, 40)
+        fat = random.randint(2, 50)
+        carb = random.randint(2, 60)
             
-        desc = f"{name}. Чудовий вибір для ситного обіду чи вечері. Вага: {weight if weight else 'стандартна порція'}."
+        desc = f"{name}. Чудовий вибір. Вага/Об'єм: {weight if weight else 'стандартна порція'}."
         
         item = {
             "id": id_counter,
@@ -165,6 +194,7 @@ for line in menu_raw.split('\n'):
             "images": [],
             "slug": slugify(name),
             "categorySlug": cat,
+            "calories": kcal,
             "sales": random.randint(10, 200),
             "dateAdded": f"2026-08-{random.randint(1,10):02d}",
             "composition": comp.capitalize(),
