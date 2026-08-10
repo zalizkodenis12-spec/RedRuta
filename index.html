@@ -475,15 +475,47 @@
   </section>
 
 
-  <!-- CATEGORIES: назва всередині фото; фон білий -->
-  <section class="categories-section" id="categories" style="background-color: #ffffff; position:relative;">
-    <div class="container" style="position:relative;z-index:1;">
-      <div class="section-head reveal">
-        <h2 class="section-title">Оберіть категорію</h2>
-        <p class="section-desc">Знайдіть ідеальні страви для будь-якої події</p>
+  <!-- OUR STORY -->
+  <section class="story-section" id="story" style="background-color: #ffffff; position:relative; overflow: hidden; padding: 0;">
+    <div style="display: flex; flex-wrap: wrap; min-height: 500px;">
+      
+      <!-- Left Photo -->
+      <div style="flex: 1 1 40%; min-width: 300px; position: relative; min-height: 400px;">
+        <img src="assets/images/Мак на красном фоні.jpeg" alt="Інтер'єр Червона Рута" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(198, 40, 40, 0.6);"></div>
       </div>
-      <div class="categories-grid" id="categoriesGrid">
-        <!-- Картки генеруються через JS -->
+      
+      <!-- Right Timeline -->
+      <div style="flex: 1 1 60%; min-width: 300px; padding: 80px 40px; display: flex; flex-direction: column; justify-content: center; background-color: #fffcfc;">
+        <div class="section-head reveal" style="text-align: left; margin-bottom: 50px;">
+          <h2 class="section-title">Наша Історія</h2>
+          <p class="section-desc">Як з'явилась Червона Рута</p>
+        </div>
+        
+        <div class="timeline" style="position: relative; border-left: 2px solid #C62828; padding-left: 30px; margin-left: 10px;">
+          
+          <div class="timeline-item reveal" style="position: relative; margin-bottom: 40px;">
+            <div style="position: absolute; left: -39px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #C62828; border: 3px solid #fffcfc;"></div>
+            <div style="font-weight: 700; color: #C62828; margin-bottom: 5px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Початок</div>
+            <h4 style="font-size: 22px; margin-bottom: 10px; font-family: var(--font-heading);">Ідея затишного місця</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 16px;">Все почалося з бажання створити місце, куди хочеться повертатись — з домашньою кухнею, теплою атмосферою і смаком, який нагадує родинні обіди.</p>
+          </div>
+          
+          <div class="timeline-item reveal" style="position: relative; margin-bottom: 40px;">
+            <div style="position: absolute; left: -39px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #C62828; border: 3px solid #fffcfc;"></div>
+            <div style="font-weight: 700; color: #C62828; margin-bottom: 5px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Відкриття</div>
+            <h4 style="font-size: 22px; margin-bottom: 10px; font-family: var(--font-heading);">Перші гості</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 16px;">Ми відкрили двері нашого закладу на Набережному Кварталі. Перші відвідувачі стали постійними гостями, а рецепти доопрацьовувались за їхніми відгуками.</p>
+          </div>
+          
+          <div class="timeline-item reveal" style="position: relative;">
+            <div style="position: absolute; left: -39px; top: 0; width: 16px; height: 16px; border-radius: 50%; background: #C62828; border: 3px solid #fffcfc;"></div>
+            <div style="font-weight: 700; color: #C62828; margin-bottom: 5px; font-size: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Сьогодні</div>
+            <h4 style="font-size: 22px; margin-bottom: 10px; font-family: var(--font-heading);">Улюблене місце вінничан</h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; font-size: 16px;">Червона Рута стала тим самим закладом, куди приходять цілими родинами і компаніями. Ми й далі готуємо з душею і бережемо ту саму домашню атмосферу.</p>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -653,47 +685,7 @@
   })();
 </script>
 
-<script src="assets/js/categories.js"></script>
-<script>
-  // ===== Render Categories =====
-  (function() {
-    const grid = document.getElementById('categoriesGrid');
-    if (!grid || typeof CATEGORIES === 'undefined') return;
 
-    CATEGORIES.forEach(function(category) {
-      const card = document.createElement('div');
-      card.className = 'category-card';
-      card.style.cursor = 'pointer';
-      card.setAttribute('data-slug', category.slug);
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('data-aos', 'zoom-in');
-      card.setAttribute('data-aos-duration', '600');
-
-      const mediaContent = category.image
-        ? `<img src="${category.image}" alt="${category.name}" loading="lazy">`
-        : `<div class="category-placeholder"></div>`;
-
-      card.innerHTML = `
-        <div class="category-media" style="position:relative;">
-          ${mediaContent}
-          <div class="category-title">${category.name}</div>
-        </div>
-      `;
-
-      card.addEventListener('click', function() {
-        window.location.href = 'catalog.html?category=' + category.slug;
-      });
-      card.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          window.location.href = 'catalog.html?category=' + category.slug;
-        }
-      });
-
-      grid.appendChild(card);
-    });
-  })();
-</script>
 
 <script src="assets/js/reviews.js"></script>
 <script>
